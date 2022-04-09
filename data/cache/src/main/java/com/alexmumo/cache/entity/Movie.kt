@@ -1,4 +1,4 @@
-package com.alexmumo.cache
+package com.alexmumo.cache.entity
 
 import androidx.room.PrimaryKey
 
