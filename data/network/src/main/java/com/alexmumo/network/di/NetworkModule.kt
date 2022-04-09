@@ -27,8 +27,6 @@ fun provideOkHttp(): OkHttpClient {
         .readTimeout(30, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS)
         .build()
-
-
 }
 
 fun provideLoggingInterceptor(): HttpLoggingInterceptor {
