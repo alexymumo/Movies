@@ -12,6 +12,7 @@ import com.alexmumo.cache.entity.Movie
     version = 1,
     exportSchema = true
 )
+// fd65c1178171ce0d12871600b495fa47
 
 @TypeConverters(
     MovieConverter::class
