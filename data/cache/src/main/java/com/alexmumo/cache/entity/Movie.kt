@@ -1,7 +1,9 @@
 package com.alexmumo.cache.entity
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Entity(tableName = "movie_entity")
 data class Movie(
     @PrimaryKey(autoGenerate = true)
     val cacheId: Int = 0,
@@ -37,5 +39,4 @@ data class Movie(
     val category: String?,
 
     var Favorite: Boolean = false,
-
 )
