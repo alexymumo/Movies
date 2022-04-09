@@ -2,6 +2,7 @@ package com.alexmumo.cache.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.alexmumo.cache.dao.MovieDao
 import com.alexmumo.cache.entity.Movie
 
 @Database(
@@ -10,4 +11,6 @@ import com.alexmumo.cache.entity.Movie
     exportSchema = true
 )
 
-abstract class MovieDatabase : RoomDatabase()
+abstract class MovieDatabase : RoomDatabase() {
+    abstract fun movieDao(): MovieDao
+}
