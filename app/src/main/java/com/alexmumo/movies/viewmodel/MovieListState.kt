@@ -1,4 +1,4 @@
-package com.alexmumo.presentation.viewmodel
+package com.alexmumo.movies.viewmodel
 
 import androidx.paging.PagingData
 import com.alexmumo.domain.models.Movie
