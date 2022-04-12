@@ -23,20 +23,12 @@ data class Movie(
     val overview: String?,
 
     val popularity: Double?,
-
     val posterPath: String?,
-
     val releaseDate: String?,
-
     val title: String?,
-
     val video: Boolean?,
-
     val voteAverage: Double?,
-
     val voteCount: Int?,
-
     val category: String?,
-
     var Favorite: Boolean = false,
 )
