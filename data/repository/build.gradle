@@ -35,7 +35,7 @@ android {
 dependencies {
     api project(":data:network")
     api project(":domain")
-    api project(":data:cache")
+    api project(':data:cache')
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
