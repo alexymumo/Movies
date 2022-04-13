@@ -1,24 +1,29 @@
 package com.alexmumo.cache.dao
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.alexmumo.cache.entity.Movie
+import com.alexmumo.cache.entity.MovieEntity
+import com.alexmumo.domain.models.Movie
 import kotlinx.coroutines.flow.Flow
 
+/*
+* query cached movies
+* */
 @Dao
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMovie(movie: List<Movie>)
+    suspend fun saveMovie(movie: List<MovieEntity>)
 
     @Query("DELETE FROM movie_entity WHERE category=:category")
     suspend fun deleteMovie(category: String)
 
     @Query("SELECT * FROM movie_entity WHERE category=:category")
-    fun fetchMovies(category: String)
+    fun pagingSource(category: String): PagingSource<Int, Movie>
 
     @Query("SELECT * FROM movie_entity WHERE Favorite=:Favorite")
-    fun fetchFavoriteMovies(Favorite: Boolean = true): Flow<List<Movie>>
+    fun fetchFavoriteMovies(Favorite: Boolean = true): Flow<List<MovieEntity>>
 }
