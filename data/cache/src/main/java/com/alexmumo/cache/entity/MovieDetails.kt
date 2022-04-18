@@ -6,28 +6,43 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "movie_detail")
 data class MovieDetails(
     val adult: Boolean?,
+
     val backdropPath: String?,
-    val budget: Int?,
+
     val genres: List<Genre>?,
+
     val homepage: String?,
-    @PrimaryKey(autoGenerate = true)
+
+    @PrimaryKey(autoGenerate = false)
     val id: Int?,
+
     val imdbId: String?,
+
     val originalLanguage: String?,
+
     val originalTitle: String?,
+
     val overview: String?,
+
     val popularity: Double?,
-    val posterPath: Any?,
-    val productionCompanies: List<ProductionCompany>?,
-    val productionCountries: List<ProductionCountry>?,
+
+    val posterPath: String?,
+
     val releaseDate: String?,
-    val revenue: Int?,
+
     val runtime: Int?,
-    val spokenLanguages: List<SpokenLanguage>?,
+
+    // val spokenLanguages: List<SpokenLanguageEntity>?,
+
     val status: String?,
+
     val tagline: String?,
+
     val title: String?,
+
     val video: Boolean?,
+
     val voteAverage: Double?,
+
     val voteCount: Int?
 )

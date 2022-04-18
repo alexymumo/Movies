@@ -24,6 +24,6 @@ interface MovieDao {
     @Query("SELECT * FROM movie_entity WHERE category=:category")
     fun pagingSource(category: String): PagingSource<Int, Movie>
 
-    @Query("SELECT * FROM movie_entity WHERE Favorite=:Favorite")
+    @Query("SELECT * FROM movie_entity WHERE isFavorite=:Favorite")
     fun fetchFavoriteMovies(Favorite: Boolean = true): Flow<List<MovieEntity>>
 }

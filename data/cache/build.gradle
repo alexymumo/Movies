@@ -34,6 +34,7 @@ android {
 
 dependencies {
     api project(":domain")
+    api project(":data:network")
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -45,6 +46,7 @@ dependencies {
     api "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     api "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
 
     //Kotlin coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
@@ -53,8 +55,8 @@ dependencies {
     // Koin
     implementation "io.insert-koin:koin-android:$koin_version"
 
-    // Pagination
-    implementation "androidx.paging:paging-compose:1.0.0-alpha14"
+    // Paging
+    implementation "androidx.paging:paging-compose:$paging_compose"
 
     // Retrofit
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"

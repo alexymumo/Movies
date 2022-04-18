@@ -3,6 +3,8 @@ package com.alexmumo.cache.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.alexmumo.cache.converters.GenreConverter
+import com.alexmumo.cache.converters.GenreIDConverter
 import com.alexmumo.cache.converters.MovieConverter
 import com.alexmumo.cache.dao.MovieDao
 import com.alexmumo.cache.dao.RemoteKeyDao
@@ -16,9 +18,10 @@ import com.alexmumo.cache.entity.RemoteKey
     exportSchema = true
 )
 
-
 @TypeConverters(
-    MovieConverter::class
+    GenreConverter::class,
+    MovieConverter::class,
+    GenreIDConverter::class
 )
 abstract class MovieDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
