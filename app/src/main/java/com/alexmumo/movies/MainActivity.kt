@@ -7,6 +7,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.alexmumo.movies.screens.HomeScreen
 import com.alexmumo.movies.ui.theme.MoviesTheme
 
 @ExperimentalFoundationApi
@@ -16,7 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MoviesTheme {
-                ShowScreen()
+                HomeScreen()
             }
         }
     }
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    ShowScreen()
+    HomeScreen()
 }
 
 @Composable

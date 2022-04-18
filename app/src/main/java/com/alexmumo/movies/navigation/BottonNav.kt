@@ -42,5 +42,5 @@ fun BottomNav() {
 @Preview(showBackground = true)
 @Composable
 fun BottomNavPreview() {
-    BottomNav()
+    // BottomNav()
 }
