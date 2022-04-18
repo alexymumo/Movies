@@ -11,6 +11,9 @@ interface RemoteKeyDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun saveRemoteKey(remoteKey: List<RemoteKey>)
 
-    @Query("SELECT * FROM remote_key WHERE movie_id=:movie_id")
+    @Query("SELECT * FROM remote_key_table WHERE movie_id=:movie_id")
     suspend fun fetchRemoteKey(movie_id: Int): RemoteKey
+
+    @Query("DELETE FROM remote_key_table")
+    suspend fun deleteRemoteKey()
 }

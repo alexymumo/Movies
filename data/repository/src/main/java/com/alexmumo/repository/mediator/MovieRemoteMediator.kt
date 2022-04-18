@@ -1,13 +1,17 @@
 package com.alexmumo.repository.mediator
 
+/*
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
+import androidx.room.withTransaction
 import com.alexmumo.cache.db.MovieDatabase
 import com.alexmumo.cache.entity.RemoteKey
 import com.alexmumo.domain.models.Movie
 import com.alexmumo.network.api.MovieApi
+import retrofit2.HttpException
+import java.io.IOException
 
 @ExperimentalPagingApi
 class MovieRemoteMediator(
@@ -16,7 +20,7 @@ class MovieRemoteMediator(
     private val movieDatabase: MovieDatabase
 ) : RemoteMediator<Int, Movie>() {
 
-    private val remoteKey = movieDatabase.remoteDao()
+    private val remoteDao = movieDatabase.remoteDao()
     private val movieDao = movieDatabase.movieDao()
 
 
@@ -43,6 +47,30 @@ class MovieRemoteMediator(
                 nextKey
             }
         }
+        try {
+            val response = movieApi.fetchPopularMovies(page = page)
+            val movies = response.results
+
+            movieDatabase.withTransaction {
+                if (loadType == LoadType.REFRESH) {
+                    remoteDao.deleteRemoteKey()
+                    movieDao.deleteMovie(category = category)
+                }
+                val keys = movies.map {
+
+                }
+                movieDatabase.remoteDao().saveRemoteKey()
+
+            }
+            return MediatorResult.Success(endOfPaginationReached = true)
+
+        } catch (exception: IOException) {
+            return MediatorResult.Error(exception)
+
+        } catch (exception: HttpException) {
+            return MediatorResult.Error(exception)
+
+        }
     }
 
     private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Movie>): RemoteKey? {
@@ -68,6 +96,8 @@ class MovieRemoteMediator(
         }
     }
 }
+
+ */
 
 /*
   *
