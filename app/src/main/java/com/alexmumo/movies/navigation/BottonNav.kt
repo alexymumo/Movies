@@ -12,7 +12,6 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun BottomNav() {
     val items = listOf(
-        NavigationItem.Home,
         NavigationItem.Favorite,
         NavigationItem.Upcoming,
         NavigationItem.TopRated,
