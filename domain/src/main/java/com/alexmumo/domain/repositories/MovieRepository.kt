@@ -5,5 +5,5 @@ import com.alexmumo.domain.models.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    suspend fun fetchAllMovies(): Flow<PagingData<Movie>>
+    suspend fun fetchAllMovies(category: String): Flow<PagingData<Movie>>
 }
