@@ -23,9 +23,7 @@ fun BottomSheet() {
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text("Like")
     }
-
 }
-
 
 @Preview
 @Composable
