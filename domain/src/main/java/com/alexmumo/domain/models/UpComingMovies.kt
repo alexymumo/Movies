@@ -1,6 +1,6 @@
 package com.alexmumo.domain.models
 
-data class PopularMovies(
+data class UpComingMovies(
     val page: Int?,
 
     val movies: List<Movie>?,
