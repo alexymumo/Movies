@@ -1,6 +1,8 @@
 package com.alexmumo.repository.datasources
 
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.alexmumo.cache.db.MovieDatabase
@@ -17,8 +19,8 @@ class MovieRepositoryImpl constructor(
     private val movieApi: MovieApi,
     private val movieDatabase: MovieDatabase
 ) : MovieRepository, BaseRepository() {
-
     private val movieDao = movieDatabase.movieDao()
+    private val _movie = MutableLiveData<List<MovieEntity>>()
 
     override suspend fun fetchAllMovies(category: String): Flow<PagingData<Movie>> {
         val pagingConfig = PagingConfig(
@@ -31,6 +33,15 @@ class MovieRepositoryImpl constructor(
             movieApi = movieApi,
             movieDatabase = movieDatabase
         )
+        val pagingSource = {
+            movieDao.pagingSource(category = category)
+        }
+
+        return Pager(
+            config = pagingConfig,
+            remoteMediator = remoteMediator,
+            pagingSourceFactory = pagingSource
+        ).flow
     }
     private suspend fun saveMovie(movies: List<MovieEntity>) = movieDao.saveMovie(movies)
 }
