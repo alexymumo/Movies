@@ -5,10 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.alexmumo.movies.screens.HomeScreen
 import com.alexmumo.movies.ui.theme.MoviesTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +16,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             MoviesTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    HomeScreen()
                 }
             }
         }
@@ -28,10 +25,6 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    HomeScreen()
+
 }
 
-@Composable
-fun ShowScreen() {
-    Text(text = "Hello world")
-}
