@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.alexmumo.movies.screens.HomeScreen
-import com.alexmumo.movies.screens.SplashScreen
+import com.alexmumo.movies.screens.home.HomeScreen
+import com.alexmumo.movies.screens.splash.SplashScreen
 import com.alexmumo.movies.screens.favorite.FavoriteScreen
 import com.alexmumo.movies.screens.popular.PopularScreen
 import com.alexmumo.movies.screens.upcoming.UpcomingScreen

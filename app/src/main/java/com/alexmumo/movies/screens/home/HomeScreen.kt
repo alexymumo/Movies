@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens
+package com.alexmumo.movies.screens.home
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

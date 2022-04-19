@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens
+package com.alexmumo.movies.screens.splash
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

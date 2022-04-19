@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens
+package com.alexmumo.movies.screens.main
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.Scaffold
