@@ -1,13 +1,15 @@
 package com.alexmumo.repository.mappers
 
+import com.alexmumo.cache.entity.Genre
 import com.alexmumo.cache.entity.MovieDetails
 import com.alexmumo.domain.models.Details
+import com.alexmumo.domain.models.Genres
 
 internal fun Details.toEntity(): MovieDetails {
     return MovieDetails(
         this.adult,
         this.backdropPath,
-        this.genres.map { it.toEntity() },
+        this.genres?.map { it.toEntity() },
         this.homepage,
         this.id,
         this.imdbId,
@@ -25,6 +27,11 @@ internal fun Details.toEntity(): MovieDetails {
         this.voteAverage,
         this.voteCount
     )
+}
 
-
+internal fun Genres.toEntity(): Genre {
+    return Genre(
+        this.id,
+        this.name
+    )
 }
