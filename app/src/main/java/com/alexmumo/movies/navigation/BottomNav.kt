@@ -42,7 +42,18 @@ fun BottomNav(
                 unselectedContentColor = Color.Magenta,
                 selectedContentColor = Color.Magenta,
                 selected = isSelected,
-                onClick = { /*TODO*/ }
+                alwaysShowLabel = true,
+                onClick = {
+                    navController.navigate(item.route) {
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route = route) {
+                                saveState = true
+                            }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
             )
         }
     }

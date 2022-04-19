@@ -10,7 +10,7 @@ import com.alexmumo.movies.navigation.Navigation
 import com.alexmumo.movies.navigation.NavigationItem
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
-@OptIn(ExperimentalAnimationApi::class)
+@ExperimentalAnimationApi
 @Composable
 fun MainScreen() {
     val navController = rememberAnimatedNavController()
@@ -21,9 +21,7 @@ fun MainScreen() {
         NavigationItem.Upcoming,
         NavigationItem.Favorite
     )
-
-    val isTopLevelDestination =
-        navController.currentBackStackEntryAsState().value?.destination?.route in topLevelDestination.map { it.route }
+    val isTopLevelDestination = navController.currentBackStackEntryAsState().value?.destination?.route in topLevelDestination.map { it.route }
     val backStackEntryState = navController.currentBackStackEntryAsState()
 
     Scaffold(
@@ -41,6 +39,7 @@ fun MainScreen() {
     }
 }
 
+@ExperimentalAnimationApi
 @Preview
 @Composable
 fun MainScreenPreview() {

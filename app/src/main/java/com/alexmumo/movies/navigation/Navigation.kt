@@ -5,19 +5,28 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.alexmumo.movies.screens.HomeScreen
+import com.alexmumo.movies.screens.SplashScreen
+import com.alexmumo.movies.screens.favorite.FavoriteScreen
+import com.alexmumo.movies.screens.popular.PopularScreen
+import com.alexmumo.movies.screens.upcoming.UpcomingScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = NavigationItem.Splash.route) {
-
+        composable(route = NavigationItem.Splash.route) {
+            SplashScreen(navController = navController)
+        }
         composable(route = NavigationItem.TopRated.route) {
-            HomeScreen(navController)
+            HomeScreen(navController = navController)
         }
         composable(route = NavigationItem.Upcoming.route) {
+            UpcomingScreen(navController = navController)
         }
         composable(route = NavigationItem.Favorite.route) {
+            FavoriteScreen(navController = navController)
         }
         composable(route = NavigationItem.Popular.route) {
+            PopularScreen(navController = navController)
         }
     }
 }
