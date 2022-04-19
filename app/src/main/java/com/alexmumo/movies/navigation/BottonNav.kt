@@ -7,6 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -25,11 +26,11 @@ fun BottomNav() {
             BottomNavigationItem(
                 icon = {
                     Icon(
-                        painterResource(id = item.icon),
-                        contentDescription = item.title
+                        painter = painterResource(id = item.icon!!),
+                        contentDescription = stringResource(id = item.title)
                     )
                 },
-                label = { Text(text = item.title) },
+                label = { Text(text = stringResource(id = item.title)) },
                 unselectedContentColor = Color.Magenta,
                 selectedContentColor = Color.Magenta,
                 selected = false,
