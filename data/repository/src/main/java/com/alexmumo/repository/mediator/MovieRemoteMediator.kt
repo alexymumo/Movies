@@ -1,6 +1,5 @@
 package com.alexmumo.repository.mediator
 
-/*
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -56,7 +55,7 @@ class MovieRemoteMediator(
                     remoteDao.deleteRemoteKey()
                     movieDao.deleteMovie(category = category)
                 }
-                val keys = movies.map {
+                val keys = movies?.map {
 
                 }
                 movieDatabase.remoteDao().saveRemoteKey()
@@ -97,7 +96,6 @@ class MovieRemoteMediator(
     }
 }
 
- */
 
 /*
   *
