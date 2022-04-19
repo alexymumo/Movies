@@ -9,6 +9,10 @@ import com.alexmumo.cache.db.MovieDatabase
 import com.alexmumo.cache.entity.RemoteKey
 import com.alexmumo.domain.models.Movie
 import com.alexmumo.network.api.MovieApi
+import com.alexmumo.network.models.TopRatedDto
+import com.alexmumo.network.models.UpComingMovieDto
+import com.alexmumo.repository.mappers.toEntity
+import com.alexmumo.repository.utils.Constants
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -22,13 +26,96 @@ class MovieRemoteMediator(
     private val remoteDao = movieDatabase.remoteDao()
     private val movieDao = movieDatabase.movieDao()
 
-
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, Movie>
     ): MediatorResult {
-        val page: Int = when(loadType) {
 
+        val pageData = fetchPageData(loadType, state)
+        val page = when (pageData) {
+            is MediatorResult.Success -> {
+                return pageData
+            }
+            else -> {
+                pageData as Int
+            }
+        }
+        try {
+            val response = when (category) {
+                Constants.POPULAR_MOVIES -> {
+                    movieApi.fetchPopularMovies(page = page)
+                }
+                Constants.TOP_RATED_MOVIES -> {
+                    movieApi.fetchTopRatedMovies(page = page)
+                }
+                Constants.UPCOMING_MOVIES -> {
+                    movieApi.fetchUpComingMovies(page = page)
+                }
+                else -> null
+            }
+
+            val movies = when(category) {
+                Constants.POPULAR_MOVIES -> {
+                    (response as UpComingMovieDto).results
+                }
+                Constants.TOP_RATED_MOVIES -> {
+                    (response as TopRatedDto).results
+                }
+                Constants.UPCOMING_MOVIES -> {
+                    (response as UpComingMovieDto).results
+                }
+                else -> null
+            }
+            val isEndOfList = when(category) {
+                Constants.POPULAR_MOVIES -> {
+                    movies?.isEmpty()
+                }
+                Constants.TOP_RATED_MOVIES -> {
+                    movies?.isEmpty()
+                }
+                Constants.UPCOMING_MOVIES -> {
+                    movies?.isEmpty()
+                }
+                else -> true
+            }
+            movieDatabase.withTransaction {
+                if (loadType == LoadType.REFRESH) {
+                    remoteDao.deleteRemoteKey()
+                    movieDao.deleteMovie(category = category)
+                }
+                val prevKey = if (page == 1) null else page -1
+                val nextKey = if (isEndOfList!!) null else page + 1
+                val keys = movies?.map {
+                    RemoteKey(movie_id = it.id!!, prevKey = prevKey, nextKey = nextKey)
+                }
+                remoteDao.saveRemoteKey(remoteKey = keys!!)
+                movieDao.saveMovie(movie = movies.map { it.toEntity(category = category) })
+            }
+            return when (category) {
+                Constants.UPCOMING_MOVIES -> {
+                    MediatorResult.Success(endOfPaginationReached = false)
+                }
+                Constants.TOP_RATED_MOVIES -> {
+                    MediatorResult.Success(endOfPaginationReached = false)
+                }
+                Constants.POPULAR_MOVIES -> {
+                    MediatorResult.Success(endOfPaginationReached = false)
+                }
+                else -> MediatorResult.Success(endOfPaginationReached = true)
+            }
+            //return MediatorResult.Success(endOfPaginationReached = true)
+
+        } catch (exception: IOException) {
+            return MediatorResult.Error(exception)
+
+        } catch (exception: HttpException) {
+            return MediatorResult.Error(exception)
+
+        }
+    }
+
+    private suspend fun fetchPageData(loadType: LoadType, state: PagingState<Int, Movie>): Any {
+        return when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
                 remoteKeys?.nextKey?.minus(1)?: 1
@@ -42,33 +129,11 @@ class MovieRemoteMediator(
             LoadType.APPEND -> {
                 val remoteKeys = getRemoteKeyForLastItem(state)
                 val nextKey = remoteKeys?.nextKey
-                ?: return MediatorResult.Success(endOfPaginationReached = true)
+                    ?: return MediatorResult.Success(endOfPaginationReached = true)
                 nextKey
             }
-        }
-        try {
-            val response = movieApi.fetchPopularMovies(page = page)
-            val movies = response.results
 
-            movieDatabase.withTransaction {
-                if (loadType == LoadType.REFRESH) {
-                    remoteDao.deleteRemoteKey()
-                    movieDao.deleteMovie(category = category)
-                }
-                val keys = movies?.map {
-
-                }
-                movieDatabase.remoteDao().saveRemoteKey()
-
-            }
-            return MediatorResult.Success(endOfPaginationReached = true)
-
-        } catch (exception: IOException) {
-            return MediatorResult.Error(exception)
-
-        } catch (exception: HttpException) {
-            return MediatorResult.Error(exception)
-
+            else -> {}
         }
     }
 
