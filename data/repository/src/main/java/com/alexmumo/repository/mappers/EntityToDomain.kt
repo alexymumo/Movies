@@ -1,13 +1,7 @@
 package com.alexmumo.repository.mappers
 
-import com.alexmumo.cache.entity.Dates
-import com.alexmumo.cache.entity.Genre
-import com.alexmumo.cache.entity.MovieDetails
-import com.alexmumo.cache.entity.MovieEntity
-import com.alexmumo.domain.models.Date
-import com.alexmumo.domain.models.Details
-import com.alexmumo.domain.models.Genres
-import com.alexmumo.domain.models.Movie
+import com.alexmumo.cache.entity.*
+import com.alexmumo.domain.models.*
 
 internal fun MovieEntity.toDomain(): Movie {
     return Movie(
@@ -45,7 +39,6 @@ internal fun Genre.toDomain(): Genres {
     )
 }
 
-
 internal fun MovieDetails.toDomain(): Details {
     return Details(
         this.adult,
@@ -67,5 +60,14 @@ internal fun MovieDetails.toDomain(): Details {
         this.video,
         this.voteAverage,
         this.voteCount
+    )
+}
+
+internal fun Popular.toDomain(): PopularMovies {
+    return PopularMovies(
+        this.page,
+        this.results?.map { it.toDomain() },
+        this.total_pages,
+        this.total_results,
     )
 }

@@ -2,8 +2,10 @@ package com.alexmumo.repository.mappers
 
 import com.alexmumo.cache.entity.Dates
 import com.alexmumo.cache.entity.MovieEntity
+import com.alexmumo.cache.entity.Popular
 import com.alexmumo.network.models.DatesDto
 import com.alexmumo.network.models.MovieDto
+import com.alexmumo.network.models.PopularMovieDto
 
 internal fun MovieDto.toEntity(category: String? = null): MovieEntity {
     return MovieEntity(
@@ -31,3 +33,13 @@ internal fun DatesDto.toEntity(): Dates {
         this.minimum
     )
 }
+
+internal fun PopularMovieDto.toEntity(): Popular {
+    return Popular(
+        this.page,
+        this.results?.map { it.toEntity() },
+        this.totalPages,
+        this.totalResults
+    )
+}
+

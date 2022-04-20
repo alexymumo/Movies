@@ -39,7 +39,7 @@ class MovieRepositoryImpl constructor(
         val pagingConfig = PagingConfig(
             pageSize = 20,
             enablePlaceholders = false,
-            maxSize = 100
+            maxSize = 10
         )
         val remoteMediator = MovieRemoteMediator(
             category = category,
