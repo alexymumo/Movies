@@ -17,6 +17,10 @@ class MovieApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initKoin()
+        initTimber()
+    }
+
+    private fun initTimber() {
     }
 
     private fun initKoin() {

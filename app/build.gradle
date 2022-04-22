@@ -111,4 +111,7 @@ dependencies {
     // Landscapist
     implementation "com.github.skydoves:landscapist-coil:1.5.0"
 
+    // Ratingbar
+    implementation 'com.github.a914-gowtham:compose-ratingbar:1.2.3'
+
 }
