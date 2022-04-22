@@ -1,4 +1,4 @@
-package com.alexmumo.movies.navigation
+package com.alexmumo.movies.ui.navigation
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.BottomNavigation

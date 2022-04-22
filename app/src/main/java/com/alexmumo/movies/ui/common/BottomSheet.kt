@@ -1,4 +1,4 @@
-package com.alexmumo.movies.common
+package com.alexmumo.movies.ui.common
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size

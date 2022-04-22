@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens.home
+package com.alexmumo.movies.ui.screens.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

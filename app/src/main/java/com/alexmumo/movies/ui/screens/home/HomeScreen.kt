@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens.home
+package com.alexmumo.movies.ui.screens.home
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

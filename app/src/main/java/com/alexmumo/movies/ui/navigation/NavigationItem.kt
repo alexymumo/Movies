@@ -1,4 +1,4 @@
-package com.alexmumo.movies.navigation
+package com.alexmumo.movies.ui.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

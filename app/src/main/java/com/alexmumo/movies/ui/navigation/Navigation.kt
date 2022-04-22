@@ -1,14 +1,15 @@
-package com.alexmumo.movies.navigation
+package com.alexmumo.movies.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.alexmumo.movies.screens.home.HomeScreen
-import com.alexmumo.movies.screens.splash.SplashScreen
-import com.alexmumo.movies.screens.favorite.FavoriteScreen
-import com.alexmumo.movies.screens.popular.PopularScreen
-import com.alexmumo.movies.screens.upcoming.UpcomingScreen
+import com.alexmumo.movies.ui.screens.favorite.FavoriteScreen
+import com.alexmumo.movies.ui.screens.home.HomeScreen
+import com.alexmumo.movies.ui.screens.popular.PopularScreen
+import com.alexmumo.movies.ui.screens.splash.SplashScreen
+import com.alexmumo.movies.ui.screens.upcoming.UpcomingScreen
+
 
 @Composable
 fun Navigation(navController: NavHostController) {

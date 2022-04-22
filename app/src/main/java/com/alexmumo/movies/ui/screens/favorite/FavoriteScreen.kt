@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens.favorite
+package com.alexmumo.movies.ui.screens.favorite
 
 import androidx.compose.foundation.background
 import androidx.compose.material.Text

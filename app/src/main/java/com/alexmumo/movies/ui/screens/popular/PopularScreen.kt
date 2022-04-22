@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens.popular
+package com.alexmumo.movies.ui.screens.popular
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens.upcoming
+package com.alexmumo.movies.ui.screens.upcoming
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package com.alexmumo.movies.components
+package com.alexmumo.movies.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -62,7 +62,6 @@ fun PopularMoviesCard(
                 contentScale = ContentScale.Crop
             )
             Box() {
-
             }
         }
     }

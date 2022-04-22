@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens.toprated
+package com.alexmumo.movies.ui.screens.toprated
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package com.alexmumo.movies.screens.splash
+package com.alexmumo.movies.ui.screens.splash
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.alexmumo.movies.R
-import com.alexmumo.movies.navigation.NavigationItem
+import com.alexmumo.movies.ui.navigation.NavigationItem
 import kotlinx.coroutines.delay
 
 @Composable

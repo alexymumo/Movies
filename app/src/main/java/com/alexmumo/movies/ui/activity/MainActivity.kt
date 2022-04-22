@@ -1,4 +1,4 @@
-package com.alexmumo.movies
+package com.alexmumo.movies.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
