@@ -107,5 +107,9 @@ dependencies {
 
     // Navigation
     implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist"
+
+    // Landscapist
     implementation "com.github.skydoves:landscapist-coil:1.5.0"
+
+    implementation "com.google.accompanist:accompanist-placeholder:$accompanist"
 }

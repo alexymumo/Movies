@@ -5,6 +5,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.alexmumo.movies.common.AppBar
 import com.alexmumo.movies.navigation.BottomNav
 import com.alexmumo.movies.navigation.Navigation
 import com.alexmumo.movies.navigation.NavigationItem
@@ -25,6 +26,9 @@ fun MainScreen() {
     val backStackEntryState = navController.currentBackStackEntryAsState()
 
     Scaffold(
+        topBar = {
+            AppBar()
+        },
         bottomBar = {
             if (isTopLevelDestination) {
                 BottomNav(
