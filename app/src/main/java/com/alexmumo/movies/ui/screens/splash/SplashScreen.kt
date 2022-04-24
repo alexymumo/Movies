@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,7 +23,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
-    LaunchedEffect(key1 = true,) {
+    LaunchedEffect(key1 = true) {
         delay(2000L)
         navController.navigate(NavigationItem.TopRated.route)
     }
@@ -32,6 +33,9 @@ fun SplashScreen(navController: NavController) {
             .background(colorResource(id = R.color.design_default_color_primary))
             .wrapContentSize(Alignment.Center)
     ) {
+        CircularProgressIndicator(
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
         Text(
             text = "Movies",
             fontFamily = FontFamily.Monospace,
