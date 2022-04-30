@@ -16,6 +16,7 @@ import com.alexmumo.repository.utils.Constants
 import retrofit2.HttpException
 import java.io.IOException
 
+/*
 @ExperimentalPagingApi
 class MovieRemoteMediator(
     private val category: String,
@@ -161,6 +162,8 @@ class MovieRemoteMediator(
     }
 }
 
+
+ */
 
 /*
   *

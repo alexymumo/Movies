@@ -1,6 +1,6 @@
 package com.alexmumo.movies.ui.components
 
-import androidx.compose.animation.*
+import androidx.compose.animation.* // ktlint-disable no-wildcard-imports
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -17,7 +18,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.request.ImageRequest
-import com.alexmumo.domain.models.Movie
 import com.alexmumo.network.models.MovieDto
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.coil.CoilImage
@@ -75,8 +75,13 @@ fun MovieInfo(
     ) {
         Text(
             text = movie.releaseDate!!,
+            color = Color.Black,
             fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.h6
+        )
+        Text(
+            text = movie.overview!!,
+            color = Color.DarkGray
         )
     }
 }
@@ -110,10 +115,10 @@ fun PopularMoviesUI(
                     PopularMoviesCard(
                         movieString = movie.backdropPath!!,
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .fillMaxWidth(0.35f)
                     )
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.size(8.dp))
                 if (movie != null) {
                     MovieInfo(
                         movie = movie,
