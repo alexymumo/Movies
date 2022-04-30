@@ -49,8 +49,8 @@ android {
 }
 
 dependencies {
-    api project(":domain")
-    api project(":data:repository")
+    api project(':domain')
+    api project(':data:repository')
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -64,6 +64,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.0.0-rc03")
 
     // Paging
     implementation "androidx.paging:paging-compose:1.0.0-alpha14"
@@ -106,5 +110,7 @@ dependencies {
 
     // Navigation
     implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist"
+
+    // Landscapist
     implementation "com.github.skydoves:landscapist-coil:1.5.0"
 }

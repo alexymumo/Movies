@@ -26,4 +26,10 @@ interface MovieDao {
 
     @Query("SELECT * FROM movie_entity WHERE isFavorite=:Favorite")
     fun fetchFavoriteMovies(Favorite: Boolean = true): Flow<List<MovieEntity>>
+
+    /*
+    @Query("SELECT * FROM movie_entity WHERE category=:category")
+    fun fetchNowPlaying(category: String = Constants.TOP_RATED_MOVIES)
+
+     */
 }

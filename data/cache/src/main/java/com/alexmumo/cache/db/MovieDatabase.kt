@@ -16,7 +16,6 @@ import com.alexmumo.cache.entity.RemoteKey
     entities = [MovieEntity::class, RemoteKey::class, MovieDetails::class],
     version = 1,
     exportSchema = false
-
 )
 
 @TypeConverters(
