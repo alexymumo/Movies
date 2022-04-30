@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import com.alexmumo.movies.ui.common.Constants.IMAGE_URL
 import com.alexmumo.movies.ui.components.PopularMoviesUI
 import org.koin.androidx.compose.getViewModel
 
@@ -17,6 +18,7 @@ fun HomeScreen(
     LazyColumn {
         items(popular) { movies ->
             PopularMoviesUI(movie = movies)
+            // PopularMoviesCard(movieString = "IMAGE_URL/${movies?.backdropPath}")
         }
     }
 }
