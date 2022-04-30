@@ -7,7 +7,7 @@ import com.alexmumo.network.models.MovieDto
 import retrofit2.HttpException
 import java.io.IOException
 
-class MoviePagingSource(private val movieApi: MovieApi) : PagingSource<Int, MovieDto>() {
+class MoviePagingSource constructor(private val movieApi: MovieApi) : PagingSource<Int, MovieDto>() {
     override fun getRefreshKey(state: PagingState<Int, MovieDto>): Int? {
         return state.anchorPosition
     }

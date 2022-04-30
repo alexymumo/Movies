@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.request.ImageRequest
 import com.alexmumo.domain.models.Movie
+import com.alexmumo.network.models.MovieDto
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.coil.CoilImage
 
@@ -62,7 +63,7 @@ fun PopularMoviesCard(
 
 @Composable
 fun MovieInfo(
-    movie: Movie,
+    movie: MovieDto,
     modifier: Modifier = Modifier,
     alignment: Alignment.Horizontal = Alignment.Start
 ) {
@@ -82,7 +83,7 @@ fun MovieInfo(
 
 @Composable
 fun PopularMoviesUI(
-    movie: Movie,
+    movie: MovieDto?,
     modifier: Modifier = Modifier
 ) {
     val density = LocalDensity.current
@@ -105,18 +106,22 @@ fun PopularMoviesUI(
             elevation = 8.dp
         ) {
             Row {
-                PopularMoviesCard(
-                    movieString = movie.backdropPath!!,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                )
+                if (movie != null) {
+                    PopularMoviesCard(
+                        movieString = movie.backdropPath!!,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
+                }
                 Spacer(modifier = Modifier.height(8.dp))
-                MovieInfo(
-                    movie = movie,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(8.dp)
-                )
+                if (movie != null) {
+                    MovieInfo(
+                        movie = movie,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(8.dp)
+                    )
+                }
             }
         }
     }
