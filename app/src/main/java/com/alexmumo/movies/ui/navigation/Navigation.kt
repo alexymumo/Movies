@@ -1,5 +1,6 @@
 package com.alexmumo.movies.ui.navigation
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -10,7 +11,7 @@ import com.alexmumo.movies.ui.screens.popular.PopularScreen
 import com.alexmumo.movies.ui.screens.splash.SplashScreen
 import com.alexmumo.movies.ui.screens.upcoming.UpcomingScreen
 
-
+@ExperimentalFoundationApi
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = NavigationItem.Splash.route) {

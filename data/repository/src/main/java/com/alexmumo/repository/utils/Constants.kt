@@ -5,4 +5,5 @@ object Constants {
     const val POPULAR_MOVIES = "popular"
     const val UPCOMING_MOVIES = "upcoming"
     const val TOP_RATED_MOVIES = "toprated"
+    const val NOW_PLAYING_MOVIES = "now_playing"
 }

@@ -1,22 +1,6 @@
 package com.alexmumo.repository.datasources
 
-import androidx.lifecycle.MutableLiveData
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import com.alexmumo.cache.db.MovieDatabase
-import com.alexmumo.cache.entity.MovieEntity
-import com.alexmumo.domain.models.Movie
-import com.alexmumo.domain.repositories.MovieRepository
-import com.alexmumo.network.api.MovieApi
-import com.alexmumo.network.utils.BaseRepository
-import com.alexmumo.repository.mediator.MovieRemoteMediator
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
-
+/*
 @ExperimentalPagingApi
 class MovieRepositoryImpl constructor(
     private val movieApi: MovieApi,
@@ -47,7 +31,9 @@ class MovieRepositoryImpl constructor(
             movieDatabase = movieDatabase
         )
         val pagingSource = {
-            movieDao.pagingSource(category = category)
+            movieDao.pagingSource(
+                category = category
+            )
         }
 
         return Pager(
@@ -56,5 +42,11 @@ class MovieRepositoryImpl constructor(
             pagingSourceFactory = pagingSource
         ).flow
     }
+
+    suspend fun fetchNowPlayingMovies(category: String): Flow<PagingData<Movie>> {
+        TODO("")
+    }
 }
+
+ */
 

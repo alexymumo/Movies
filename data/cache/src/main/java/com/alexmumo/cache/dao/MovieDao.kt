@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.alexmumo.cache.entity.MovieEntity
+import com.alexmumo.cache.utils.Constants
 import com.alexmumo.domain.models.Movie
 import kotlinx.coroutines.flow.Flow
 
@@ -26,4 +27,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM movie_entity WHERE isFavorite=:Favorite")
     fun fetchFavoriteMovies(Favorite: Boolean = true): Flow<List<MovieEntity>>
+
+    @Query("SELECT * FROM movie_entity WHERE category=:category")
+    fun fetchNowPlaying(category: String = Constants.TOP_RATED_MOVIES)
 }

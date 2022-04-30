@@ -2,7 +2,6 @@ package com.alexmumo.movies
 
 import android.app.Application
 import androidx.paging.ExperimentalPagingApi
-import com.alexmumo.domain.di.domainModule
 import com.alexmumo.movies.di.presentationModule
 import com.alexmumo.network.di.networkModule
 import com.alexmumo.repository.di.repositoryModule
@@ -26,7 +25,7 @@ class MovieApplication : Application() {
     }
 
     private fun initKoin() {
-        val modules = listOf(networkModule, repositoryModule, domainModule, presentationModule)
+        val modules = listOf(networkModule, repositoryModule, presentationModule)
         startKoin {
             androidLogger(level = Level.NONE)
             androidContext(this@MovieApplication)

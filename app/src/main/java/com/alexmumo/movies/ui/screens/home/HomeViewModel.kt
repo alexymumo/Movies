@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.alexmumo.domain.models.Movie
-import com.alexmumo.domain.repositories.MovieRepository
+import com.alexmumo.repository.repositories.MovieRepository
 import com.alexmumo.repository.utils.Constants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
