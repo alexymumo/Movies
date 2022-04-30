@@ -1,13 +1,15 @@
 package com.alexmumo.movies.ui.components
 
-import androidx.compose.animation.*
-import androidx.compose.foundation.layout.*
+// ktlint-disable no-wildcard-imports
+// ktlint-disable no-wildcard-imports
+import androidx.compose.animation.* // ktlint-disable no-wildcard-imports
+import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,13 +19,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.palette.graphics.Palette
 import coil.request.ImageRequest
 import com.alexmumo.movies.ui.common.Constants.IMAGE_URL
 import com.alexmumo.network.models.MovieDto
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.coil.CoilImage
-import com.skydoves.landscapist.palette.BitmapPalette
 
 @Composable
 fun MovieCard(
@@ -32,26 +32,19 @@ fun MovieCard(
 ) {
     Card(
         modifier = modifier
-            .height(250.dp)
-            .width(250.dp),
+            .fillMaxWidth()
+            .fillMaxHeight(),
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp)
     ) {
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-            var palette by remember { mutableStateOf<Palette?>(null) }
             CoilImage(
-                modifier = modifier
-                    .height(250.dp)
-                    .width(250.dp),
                 imageRequest = ImageRequest
                     .Builder(LocalContext.current)
                     .data(movieString)
                     .crossfade(true)
                     .build(),
                 alignment = Alignment.Center,
-                bitmapPalette = BitmapPalette {
-                    palette = it
-                },
                 loading = {
                     Box(modifier = Modifier.fillMaxSize()) {
                         CircularProgressIndicator(
@@ -79,19 +72,22 @@ fun MovieInfo(
 ) {
     Column(
         modifier = modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
+            .fillMaxHeight()
+            .fillMaxWidth(),
         horizontalAlignment = alignment
     ) {
         Text(
             text = movie.releaseDate!!,
-            color = Color.Black,
+            color = Color.Green,
             fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.h6
         )
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = movie.originalTitle!!,
-            color = Color.DarkGray
+            color = Color.DarkGray,
+            style = MaterialTheme.typography.h6,
+            fontWeight = FontWeight.Bold
         )
     }
 }

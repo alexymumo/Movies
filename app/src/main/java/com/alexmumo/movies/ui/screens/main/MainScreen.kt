@@ -1,6 +1,17 @@
 package com.alexmumo.movies.ui.screens.main
 
-/*
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.alexmumo.movies.ui.navigation.BottomNav
+import com.alexmumo.movies.ui.navigation.Navigation
+import com.alexmumo.movies.ui.navigation.NavigationItem
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+
+
 @ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @Composable
@@ -39,5 +50,4 @@ fun MainScreenPreview() {
     MainScreen()
 }
 
- */
 
