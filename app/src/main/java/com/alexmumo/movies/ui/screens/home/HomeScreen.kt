@@ -1,7 +1,6 @@
 package com.alexmumo.movies.ui.screens.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyListState
@@ -25,11 +24,30 @@ fun HomeScreen(
 ) {
     val listState: LazyListState = rememberLazyListState()
     val popular = viewModel.popular.value.collectAsLazyPagingItems()
-    val now = viewModel.nowplaying.value.collectAsLazyPagingItems()
+    val now_playing = viewModel.nowplaying.value.collectAsLazyPagingItems()
     LazyRow(
-        modifier = Modifier,
-        state = listState
-    ) {
+        content = {
+            items(popular) { movie ->
+                MovieCard(
+                    movieString = "${Constants.IMAGE_URL}/${movie?.backdropPath}",
+                    modifier = Modifier
+                        .height(200.dp)
+                        .width(200.dp)
+                )
+            }
+            items(now_playing) { movie ->
+                MovieCard(
+                    movieString = "${Constants.IMAGE_URL}/${movie?.backdropPath}",
+                    modifier = Modifier
+                        .height(200.dp)
+                        .width(200.dp)
+                )
+            }
+        }
+    )
+}
+
+/*{
         items(popular) { movie ->
             MovieCard(
                 movieString = "${Constants.IMAGE_URL}/${movie?.backdropPath}",
@@ -38,15 +56,7 @@ fun HomeScreen(
                     .width(200.dp)
             )
         }
-        items(now) { movie ->
-            MovieCard(
-                movieString = "${Constants.IMAGE_URL}/${movie?.backdropPath}",
-                modifier = Modifier
-                    .height(200.dp)
-                    .width(200.dp)
-            )
-        }
 
-        }
     }
-}
+
+     */

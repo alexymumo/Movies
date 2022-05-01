@@ -2,6 +2,7 @@ package com.alexmumo.repository.di
 
 import androidx.paging.ExperimentalPagingApi
 import com.alexmumo.repository.datasources.MoviePagingSource
+import com.alexmumo.repository.datasources.NowPlayingPagingSource
 import com.alexmumo.repository.repositories.MovieRepository
 import org.koin.dsl.module
 
@@ -14,6 +15,6 @@ val repositoryModule = module {
         MovieRepository(movieApi = get())
     }
     single {
-        MovieRepository(movieApi = get())
+        NowPlayingPagingSource(movieApi = get())
     }
 }

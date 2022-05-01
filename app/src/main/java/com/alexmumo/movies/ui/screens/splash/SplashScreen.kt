@@ -21,11 +21,11 @@ import com.alexmumo.movies.R
 import com.alexmumo.movies.ui.navigation.NavigationItem
 import kotlinx.coroutines.delay
 
-
 @Composable
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
         delay(2000L)
+        navController.popBackStack()
         navController.navigate(NavigationItem.TopRated.route)
     }
     Column(
