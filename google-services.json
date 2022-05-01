@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "885685062128",
+    "project_id": "movies-cd7d0",
+    "storage_bucket": "movies-cd7d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885685062128:android:d52493acaf1cce44d87535",
+        "android_client_info": {
+          "package_name": "com.alexmumo.movies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885685062128-uavtd410hc4qq3eqvaojekub9afbaim0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzoUlVOxjx65KFQjiMkMyr9CfHYqgmZec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885685062128-uavtd410hc4qq3eqvaojekub9afbaim0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
