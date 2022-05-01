@@ -17,8 +17,8 @@ fun HomeScreen(
 ) {
     val popular = viewModel.popular.value.collectAsLazyPagingItems()
     LazyColumn {
-        items(popular) { movies ->
-            PopularMovieItem(movie = movies)
+        items(popular) { movie ->
+            PopularMovieItem(movie = movie!!)
         }
     }
 }

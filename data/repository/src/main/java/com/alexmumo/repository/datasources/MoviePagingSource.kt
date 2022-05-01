@@ -3,7 +3,6 @@ package com.alexmumo.repository.datasources
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.alexmumo.network.api.MovieApi
-import com.alexmumo.network.models.Movie
 import retrofit2.HttpException
 import java.io.IOException
 

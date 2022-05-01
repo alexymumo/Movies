@@ -19,28 +19,4 @@ interface MovieApi {
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
-
-    /*
-    @GET("/movie/top_rated")
-    suspend fun fetchTopRatedMovies(
-        @Query("api_key") apiKey: String = API_KEY,
-        @Query("page") page: Int = 1,
-        @Query("language") language: String = "en"
-    ): TopRatedDto
-
-    @GET("/movie/upcoming")
-    suspend fun fetchUpComingMovies(
-        @Query("api_key") apiKey: String = API_KEY,
-        @Query("page") page: Int = 1,
-        @Query("language") language: String = "en"
-    ): UpComingMovieDto
-
-    @GET("/movie/{movie_id}/recommendations")
-    suspend fun fetchMovieRecommendations(
-        @Query("api_key") apiKey: String = API_KEY,
-        @Query("page") page: Int = 1,
-        @Query("language") language: String = "en"
-    ): RecommendationsDto
-
-     */
 }

@@ -94,7 +94,7 @@ fun MovieInfo(
 
 @Composable
 fun PopularMovieItem(
-    movie: Movie?,
+    movie: Movie,
     modifier: Modifier = Modifier
 ) {
     val density = LocalDensity.current
@@ -117,22 +117,18 @@ fun PopularMovieItem(
             elevation = 8.dp
         ) {
             Row {
-                if (movie != null) {
-                    MovieCard(
-                        movieString = "$IMAGE_URL/${movie.backdropPath}",
-                        modifier = Modifier
-                            .fillMaxWidth(0.35f)
-                    )
-                }
+                MovieCard(
+                    movieString = "$IMAGE_URL/${movie.backdropPath}",
+                    modifier = Modifier
+                        .fillMaxWidth(0.35f)
+                )
                 Spacer(modifier = Modifier.size(8.dp))
-                if (movie != null) {
-                    MovieInfo(
-                        movie = movie,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(8.dp)
-                    )
-                }
+                MovieInfo(
+                    movie = movie,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(8.dp)
+                )
             }
         }
     }

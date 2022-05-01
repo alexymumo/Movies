@@ -1,6 +1,5 @@
 package com.alexmumo.network.responses
 
-import com.alexmumo.network.models.Movie
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
