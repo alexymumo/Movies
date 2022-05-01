@@ -19,4 +19,9 @@ interface MovieApi {
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
+
+    @GET("movie/top_rated")
+    suspend fun fetchTopRated(
+
+    )
 }
