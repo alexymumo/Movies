@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.alexmumo.cache.entity.MovieEntity
+import com.alexmumo.network.models.Movie
 import kotlinx.coroutines.flow.Flow
 
 /*
