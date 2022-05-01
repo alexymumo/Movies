@@ -21,28 +21,10 @@ jobs:
         run: ./gradlew assemble
       - name: Build Debug
         run: ./gradlew assembleDebug --stacktrace
-  deploy:
-    needs: [ build ]
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout Code
-          uses: actions/checkout@v1
-
-        - name: Set up JDK
-          uses: actions/setup-java@v1
-          with:
-            java-version: 11
-
-        - name: Make gradlew executable
-          run: chmod +x ./gradlew
-
-        - name: Build Debug APK
-          run: ./gradlew assembleDebug --stacktrace
-
-        - name: Upload Artifact to Firebase App Distribution
-          uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
-          with:
-            appId: ${{secrets.FIREBASE_APP_ID}}
-            token: ${{secrets.FIREBASE_TOKEN}}
-            groups: testers
-            file: app/build/outputs/apk/debug/app-debug.apk
+      - name: Upload Artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: testers
+          file: app/build/outputs/apk/debug/app-debug.apk
