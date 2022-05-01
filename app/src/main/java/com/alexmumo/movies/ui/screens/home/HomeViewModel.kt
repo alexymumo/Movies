@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.filter
-import com.alexmumo.network.models.MovieDto
+import com.alexmumo.network.models.Movie
 import com.alexmumo.repository.repositories.MovieRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
@@ -17,8 +17,8 @@ import kotlinx.coroutines.launch
 class HomeViewModel constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
-    private var _popularMovies = mutableStateOf<Flow<PagingData<MovieDto>>>(emptyFlow())
-    val popular: State<Flow<PagingData<MovieDto>>> = _popularMovies
+    private var _popularMovies = mutableStateOf<Flow<PagingData<Movie>>>(emptyFlow())
+    val popular: State<Flow<PagingData<Movie>>> = _popularMovies
     init {
         fetchPopularMovies(null)
     }

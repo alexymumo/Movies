@@ -2,7 +2,7 @@ package com.alexmumo.network.models
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDto(
+data class Movie(
     @SerializedName("adult")
     val adult: Boolean?,
     @SerializedName("backdrop_path")

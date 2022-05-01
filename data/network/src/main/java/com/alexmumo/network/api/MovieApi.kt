@@ -13,6 +13,13 @@ interface MovieApi {
         @Query("language") language: String = "en"
     ): MovieResponse
 
+    @GET("movie/upcoming")
+    suspend fun fetchUpcomingMovies(
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): MovieResponse
+
     /*
     @GET("/movie/top_rated")
     suspend fun fetchTopRatedMovies(

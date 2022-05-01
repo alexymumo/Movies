@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.request.ImageRequest
 import com.alexmumo.movies.ui.common.Constants.IMAGE_URL
-import com.alexmumo.network.models.MovieDto
+import com.alexmumo.network.models.Movie
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.coil.CoilImage
 
@@ -66,7 +66,7 @@ fun MovieCard(
 
 @Composable
 fun MovieInfo(
-    movie: MovieDto,
+    movie: Movie,
     modifier: Modifier = Modifier,
     alignment: Alignment.Horizontal = Alignment.Start
 ) {
@@ -94,7 +94,7 @@ fun MovieInfo(
 
 @Composable
 fun PopularMovieItem(
-    movie: MovieDto?,
+    movie: Movie?,
     modifier: Modifier = Modifier
 ) {
     val density = LocalDensity.current
