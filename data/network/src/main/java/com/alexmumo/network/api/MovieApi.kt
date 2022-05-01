@@ -21,7 +21,5 @@ interface MovieApi {
     ): MovieResponse
 
     @GET("movie/top_rated")
-    suspend fun fetchTopRated(
-
-    )
+    suspend fun fetchTopRated()
 }
