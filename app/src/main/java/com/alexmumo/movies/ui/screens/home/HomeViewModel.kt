@@ -19,8 +19,26 @@ class HomeViewModel constructor(
 ) : ViewModel() {
     private var _popularMovies = mutableStateOf<Flow<PagingData<Movie>>>(emptyFlow())
     val popular: State<Flow<PagingData<Movie>>> = _popularMovies
+
+    private var _nowplaying = mutableStateOf<Flow<PagingData<Movie>>>(emptyFlow())
+    val nowplaying: State<Flow<PagingData<Movie>>> = _nowplaying
     init {
         fetchPopularMovies(null)
+        fetchNowPlayingMovies(null)
+    }
+
+    private fun fetchNowPlayingMovies(genreId: Int?) {
+        viewModelScope.launch {
+            _nowplaying.value = if (genreId != null) {
+                movieRepository.fetchNowPlayingMovies().map { pagingData ->
+                    pagingData.filter {
+                        it.genreIds.contains(genreId)
+                    }
+                }.cachedIn(viewModelScope)
+            }else {
+                movieRepository.fetchNowPlayingMovies().cachedIn(viewModelScope)
+            }
+        }
     }
 
     private fun fetchPopularMovies(genreId: Int?) {

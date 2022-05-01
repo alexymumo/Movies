@@ -13,4 +13,7 @@ val repositoryModule = module {
     single {
         MovieRepository(movieApi = get())
     }
+    single {
+        MovieRepository(movieApi = get())
+    }
 }
