@@ -1,8 +1,10 @@
 package com.alexmumo.network.api
 
+import com.alexmumo.network.responses.MovieDetailResponse
 import com.alexmumo.network.responses.MovieResponse
 import com.alexmumo.network.utils.Constants.API_KEY
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
@@ -19,6 +21,13 @@ interface MovieApi {
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
+
+    @GET("movie/{movie_id}")
+    suspend fun fetchMovieDetail(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): MovieDetailResponse
 
     @GET("movie/top_rated")
     suspend fun fetchTopRated(
