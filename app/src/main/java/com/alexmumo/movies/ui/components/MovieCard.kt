@@ -3,27 +3,28 @@ package com.alexmumo.movies.ui.components
 // ktlint-disable no-wildcard-imports
 // ktlint-disable no-wildcard-imports
 import androidx.compose.animation.* // ktlint-disable no-wildcard-imports
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.palette.graphics.Palette
 import coil.request.ImageRequest
-import com.alexmumo.movies.ui.common.Constants.IMAGE_URL
 import com.alexmumo.network.models.Movie
 import com.skydoves.landscapist.CircularReveal
+import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
+import com.skydoves.landscapist.palette.BitmapPalette
 
 @Composable
 fun MovieCard(
@@ -38,20 +39,36 @@ fun MovieCard(
         shape = RoundedCornerShape(8.dp)
     ) {
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+            var palette by remember { mutableStateOf<Palette?>(null) }
             CoilImage(
                 imageRequest = ImageRequest
                     .Builder(LocalContext.current)
                     .data(movieString)
                     .crossfade(true)
                     .build(),
+                bitmapPalette = BitmapPalette {
+
+                    palette = it
+                },
                 alignment = Alignment.Center,
-                loading = {
-                    Box(modifier = Modifier.fillMaxSize()) {
+                modifier = modifier
+                    .aspectRatio(0.8f),
+                shimmerParams = ShimmerParams(
+                    baseColor = MaterialTheme.colors.background,
+                    highlightColor = Color.Green,
+                    durationMillis = 350,
+                    dropOff = 0.65f,
+                    tilt = 20f
+                ),
+               /* loading = {
+                    Box(modifier = Modifier.matchParentSize()) {
                         CircularProgressIndicator(
                             modifier = Modifier.align(Alignment.Center)
                         )
                     }
                 },
+
+                */
                 circularReveal = CircularReveal(
                     duration = 300,
                 ),
@@ -60,6 +77,18 @@ fun MovieCard(
                 },
                 contentScale = ContentScale.Crop
             )
+            Crossfade(
+                targetState = palette,
+                modifier = Modifier
+                    .padding(horizontal = 8.dp)
+                    .size(45.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .background(color = Color(it?.lightVibrantSwatch?.rgb ?:0))
+                        .fillMaxSize()
+                )
+            }
         }
     }
 }
@@ -91,6 +120,8 @@ fun MovieInfo(
         )
     }
 }
+
+/*
 
 @Composable
 fun PopularMovieItem(
@@ -133,3 +164,6 @@ fun PopularMovieItem(
         }
     }
 }
+
+
+ */
