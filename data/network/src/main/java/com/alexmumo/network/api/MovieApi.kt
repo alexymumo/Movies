@@ -21,5 +21,9 @@ interface MovieApi {
     ): MovieResponse
 
     @GET("movie/top_rated")
-    suspend fun fetchTopRated()
+    suspend fun fetchTopRated(
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): MovieResponse
 }

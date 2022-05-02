@@ -22,20 +22,38 @@ class HomeViewModel constructor(
 
     private var _nowplaying = mutableStateOf<Flow<PagingData<Movie>>>(emptyFlow())
     val nowplaying: State<Flow<PagingData<Movie>>> = _nowplaying
+
+    private var _toprated = mutableStateOf<Flow<PagingData<Movie>>>(emptyFlow())
+    val toprated: State<Flow<PagingData<Movie>>> = _toprated
     init {
         fetchPopularMovies(null)
         fetchNowPlayingMovies(null)
+        fetchTopRatedMovies(null)
+    }
+
+    private fun fetchTopRatedMovies(genreId: Int?) {
+        viewModelScope.launch {
+            _toprated.value = if (genreId != null) {
+                movieRepository.fetchTopRatedMovies().map { pagingData ->
+                    pagingData.filter {
+                        it.genreIds.contains(genreId)
+                    }
+                }.cachedIn(viewModelScope)
+            } else {
+                movieRepository.fetchTopRatedMovies().cachedIn(viewModelScope)
+            }
+        }
     }
 
     private fun fetchNowPlayingMovies(genreId: Int?) {
         viewModelScope.launch {
             _nowplaying.value = if (genreId != null) {
-                movieRepository.fetchNowPlayingMovies().map { pagingData ->
+                movieRepository.fetchTopRatedMovies().map { pagingData ->
                     pagingData.filter {
                         it.genreIds.contains(genreId)
                     }
                 }.cachedIn(viewModelScope)
-            }else {
+            } else {
                 movieRepository.fetchNowPlayingMovies().cachedIn(viewModelScope)
             }
         }

@@ -25,25 +25,27 @@ fun HomeScreen(
     val listState: LazyListState = rememberLazyListState()
     val popular = viewModel.popular.value.collectAsLazyPagingItems()
     val now_playing = viewModel.nowplaying.value.collectAsLazyPagingItems()
+    val toprated = viewModel.toprated.value.collectAsLazyPagingItems()
     LazyRow(
         content = {
-            items(popular) { movie ->
+            items(toprated) { toprated ->
+                MovieCard(
+                    movieString = "${Constants.IMAGE_URL}/${toprated?.backdropPath}",
+                    modifier = Modifier
+                        .height(200.dp)
+                        .width(200.dp)
+                )
+            }
+            /*items(now_playing) { movie ->
                 MovieCard(
                     movieString = "${Constants.IMAGE_URL}/${movie?.backdropPath}",
                     modifier = Modifier
                         .height(200.dp)
                         .width(200.dp)
                 )
-            }
-            items(now_playing) { movie ->
-                MovieCard(
-                    movieString = "${Constants.IMAGE_URL}/${movie?.backdropPath}",
-                    modifier = Modifier
-                        .height(200.dp)
-                        .width(200.dp)
-                )
-            }
+            } */
         }
+
     )
 }
 
