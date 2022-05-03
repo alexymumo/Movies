@@ -11,16 +11,14 @@ class NowPlayingPagingSource constructor(private val movieApi: MovieApi) : Pagin
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition
     }
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val nextPage = params.key ?: 1
-            val now = movieApi.fetchUpcomingMovies(nextPage)
-            // val prevKey = if (nextPage > 0) nextPage - 1 else null
+            val now_playing = movieApi.fetchNowPlayingMovies(nextPage)
             LoadResult.Page(
-                data = now.results,
+                data = now_playing.results,
                 prevKey = if (nextPage == 1) null else nextPage - 1,
-                nextKey = if (now.results.isEmpty()) null else now.page + 1
+                nextKey = if (now_playing.results.isEmpty()) null else now_playing.page + 1
             )
         } catch (e: IOException) {
             LoadResult.Error(e)

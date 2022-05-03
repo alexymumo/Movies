@@ -1,10 +1,4 @@
-desc "Firebase App Distribution"
-lane :beta do
-  build
-
-  firebase_app_distribution(
-      app: "1:885685062128:android:d52493acaf1cce44d87535",
-      groups: "alex",
-      release_notes: "Lots of amazing new features to test out!"
-  )
+desc "Gradle"
+lane :tests do
+  gradle(task: "test")
 end

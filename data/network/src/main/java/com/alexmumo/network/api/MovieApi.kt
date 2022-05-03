@@ -11,7 +11,14 @@ import retrofit2.http.Query
 interface MovieApi {
     @GET("movie/popular")
     suspend fun fetchPopularMovies(
-        @Query("page") page: Int = 0,
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): MovieResponse
+
+    @GET("movie/now_playing")
+    suspend fun fetchNowPlayingMovies(
+        @Query("page") page: Int = 1,
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
