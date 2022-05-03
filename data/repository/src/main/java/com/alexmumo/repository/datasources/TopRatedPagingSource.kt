@@ -7,18 +7,20 @@ import com.alexmumo.network.models.Movie
 import retrofit2.HttpException
 import java.io.IOException
 
-class NowPlayingPagingSource constructor(private val movieApi: MovieApi) : PagingSource<Int, Movie>() {
+class TopRatedPagingSource constructor(private val movieApi: MovieApi) : PagingSource<Int, Movie>() {
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition
     }
+
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val nextPage = params.key ?: 1
-            val now_playing = movieApi.fetchNowPlayingMovies(nextPage)
+            val toprated = movieApi.fetchTopRated(nextPage)
+            // val prevKey = if (nextPage > 0) nextPage - 1 else null
             LoadResult.Page(
-                data = now_playing.results,
+                data = toprated.results,
                 prevKey = if (nextPage == 1) null else nextPage - 1,
-                nextKey = if (now_playing.results.isEmpty()) null else now_playing.page + 1
+                nextKey = if (toprated.results.isEmpty()) null else toprated.page + 1
             )
         } catch (e: IOException) {
             LoadResult.Error(e)

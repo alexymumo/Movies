@@ -21,9 +21,8 @@ jobs:
         run: ./gradlew assemble
       - name: Build Debug
         run: ./gradlew assembleDebug --stacktrace
-      - name: Upload to Firebase Distribution
+      - name: Upload Artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
-      - name: Firebase App Distribution
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}

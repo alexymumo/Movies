@@ -2,8 +2,11 @@ package com.alexmumo.movies.ui.navigation
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.alexmumo.movies.ui.screens.detail.DetailScreen
 import com.alexmumo.movies.ui.screens.favorite.FavoriteScreen
 import com.alexmumo.movies.ui.screens.home.HomeScreen
 import com.alexmumo.movies.ui.screens.popular.PopularScreen
@@ -28,6 +31,25 @@ fun Navigation(navController: NavHostController) {
         }
         composable(route = NavigationItem.Popular.route) {
             PopularScreen(navController = navController)
+        }
+        composable(route = NavigationItem.Favorite.route) {
+            FavoriteScreen(navController = navController)
+        }
+        composable(
+            route = NavigationItem.Details.route,
+            arguments = listOf(
+                navArgument("movieId") {
+                    type = NavType.IntType
+                }
+            )
+        ) {
+            val movieID = it.arguments?.getInt("movieId")
+            if (movieID != null) {
+                DetailScreen(
+                    navController = navController,
+                    movieId = movieID
+                )
+            }
         }
     }
 }

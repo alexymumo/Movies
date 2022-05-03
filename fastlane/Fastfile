@@ -1,0 +1,4 @@
+desc "Gradle"
+lane :tests do
+  gradle(task: "test")
+end

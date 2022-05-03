@@ -11,7 +11,6 @@ import com.alexmumo.movies.ui.navigation.Navigation
 import com.alexmumo.movies.ui.navigation.NavigationItem
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
-
 @ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @Composable
@@ -49,5 +48,3 @@ fun MainScreen() {
 fun MainScreenPreview() {
     MainScreen()
 }
-
-
