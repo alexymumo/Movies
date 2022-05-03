@@ -32,6 +32,9 @@ fun Navigation(navController: NavHostController) {
         composable(route = NavigationItem.Popular.route) {
             PopularScreen(navController = navController)
         }
+        composable(route = NavigationItem.Favorite.route) {
+            FavoriteScreen(navController = navController)
+        }
         composable(
             route = NavigationItem.Details.route,
             arguments = listOf(
