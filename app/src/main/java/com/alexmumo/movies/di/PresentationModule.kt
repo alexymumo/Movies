@@ -1,6 +1,7 @@
 package com.alexmumo.movies.di
 
 import com.alexmumo.movies.ui.screens.detail.DetailViewModel
+import com.alexmumo.movies.ui.screens.favorite.FavoriteViewModel
 import com.alexmumo.movies.ui.screens.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -8,4 +9,5 @@ import org.koin.dsl.module
 val presentationModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { DetailViewModel(get()) }
+    viewModel { FavoriteViewModel(get()) }
 }

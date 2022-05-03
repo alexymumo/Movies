@@ -1,14 +1,14 @@
 package com.alexmumo.movies.ui.screens.detail
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun DetailScreen() {
-}
+fun DetailScreen(
+    navController: NavController,
+    viewModel: DetailViewModel = getViewModel(),
+    movieId: Int
+) {
 
-@Preview
-@Composable
-fun DetailScreenPreview() {
-    DetailScreen()
 }

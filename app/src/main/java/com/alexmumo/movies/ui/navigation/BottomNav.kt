@@ -35,10 +35,10 @@ fun BottomNav(
                 icon = {
                     Icon(
                         painter = painterResource(id = item.icon!!),
-                        contentDescription = stringResource(id = item.title)
+                        contentDescription = stringResource(id = item.title!!)
                     )
                 },
-                label = { Text(text = stringResource(id = item.title)) },
+                label = { Text(text = stringResource(id = item.title!!)) },
                 unselectedContentColor = Color.Magenta,
                 selectedContentColor = Color.Magenta,
                 selected = isSelected,
