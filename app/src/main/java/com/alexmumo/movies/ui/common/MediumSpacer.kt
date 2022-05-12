@@ -15,5 +15,4 @@ fun MediumSpacer() {
 @Preview
 @Composable
 fun MediumPreview() {
-    MediumSpacer()
 }
