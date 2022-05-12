@@ -1,4 +1,24 @@
-desc "Gradle"
-lane :tests do
-  gradle(task: "test")
+default_platform(:android)
+
+platform :android do
+    desc "Run Tests"
+    lane :test do
+        gradle(task: "test")
+    end
+
+    desc "Movies"
+    lane :distribute do
+        build_android_app(task: "clean bundleRelease")
+        # build_android_app is a built-in fastlane action.
+        firebase_app_distribution(
+            app: "1:885685062128:android:d52493acaf1cce44d87535",
+            release_notes: "Lots of amazing new features to test out!"
+        )
+    end
+
+    desc "Submit a new Beta Build to Crashlytics Beta"
+    lane :beta do
+        gradle(task: "clean assembleRelease")
+        crashlytics
+    end
 end

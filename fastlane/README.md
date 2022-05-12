@@ -13,13 +13,31 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### tests
+## Android
+
+### android test
 
 ```sh
-[bundle exec] fastlane tests
+[bundle exec] fastlane android test
 ```
 
-Gradle
+Run Tests
+
+### android distribute
+
+```sh
+[bundle exec] fastlane android distribute
+```
+
+Movies
+
+### android beta
+
+```sh
+[bundle exec] fastlane android beta
+```
+
+Submit a new Beta Build to Crashlytics Beta
 
 ----
 
