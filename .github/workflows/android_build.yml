@@ -3,10 +3,10 @@ name: Firebase Build
 on:
   pull_request:
     branches:
-      - 'master'
+      - 'main'
   push:
     branches:
-      - 'master'
+      - 'compose'
 jobs:
   build:
     runs-on: ubuntu-latest
