@@ -1,7 +1,12 @@
-name: Android Build
+name: Firebase Distribution
 
-on: pull_request
-
+on:
+  pull_request:
+    branches:
+      - 'compose'
+  push:
+    branches:
+      - 'compose'
 jobs:
   build:
     runs-on: ubuntu-latest

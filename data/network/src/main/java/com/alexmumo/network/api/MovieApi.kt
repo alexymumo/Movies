@@ -2,8 +2,10 @@ package com.alexmumo.network.api
 
 import com.alexmumo.network.responses.MovieDetailResponse
 import com.alexmumo.network.responses.MovieResponse
+import com.alexmumo.network.responses.SimilarMovieResponse
 import com.alexmumo.network.responses.VideoResponse
 import com.alexmumo.network.utils.Constants.API_KEY
+import com.alexmumo.network.utils.Constants.FIRST_PAGE_INDEX
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -50,4 +52,11 @@ interface MovieApi {
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): VideoResponse
+
+    @GET("movie/{movie_id}/similar")
+    suspend fun fetchSimilarMovies(
+        @Query("page") page: Int = FIRST_PAGE_INDEX,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): SimilarMovieResponse
 }
