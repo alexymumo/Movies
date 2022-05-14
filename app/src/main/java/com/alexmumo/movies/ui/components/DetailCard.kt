@@ -28,7 +28,6 @@ fun DetailCard(
     date: String,
     title: String,
     modifier: Modifier = Modifier,
-    // movieDetail: MovieDetailResponse,
     viewModel: DetailViewModel = getViewModel(),
 ) {
     ConstraintLayout(
