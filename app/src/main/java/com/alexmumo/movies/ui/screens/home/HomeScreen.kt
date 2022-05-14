@@ -27,7 +27,6 @@ fun HomeScreen(
     val nowplaying = viewModel.nowplaying.value.collectAsLazyPagingItems()
     val toprated = viewModel.toprated.value.collectAsLazyPagingItems()
     val upcoming = viewModel.upcoming.value.collectAsLazyPagingItems()
-    val scrollState = rememberScrollState()
 
     LazyColumn {
         item {
