@@ -1,4 +1,4 @@
-package com.alexmumo.network.models
+package com.alexmumo.domain.models
 
 import com.google.gson.annotations.SerializedName
 

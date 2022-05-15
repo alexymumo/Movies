@@ -1,9 +1,9 @@
-package com.alexmumo.network.responses
+package com.alexmumo.domain.models.responses
 
-import com.alexmumo.network.models.Movie
+import com.alexmumo.domain.models.Movie
 import com.google.gson.annotations.SerializedName
 
-data class SimilarMovieResponse(
+data class MovieResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")

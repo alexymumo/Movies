@@ -1,9 +1,9 @@
 package com.alexmumo.network.api
 
-import com.alexmumo.network.responses.MovieDetailResponse
-import com.alexmumo.network.responses.MovieResponse
-import com.alexmumo.network.responses.SimilarMovieResponse
-import com.alexmumo.network.responses.VideoResponse
+import com.alexmumo.domain.models.responses.MovieDetailResponse
+import com.alexmumo.domain.models.responses.MovieResponse
+import com.alexmumo.domain.models.responses.SimilarMovieResponse
+import com.alexmumo.domain.models.responses.VideoResponse
 import com.alexmumo.network.utils.Constants.API_KEY
 import com.alexmumo.network.utils.Constants.FIRST_PAGE_INDEX
 import retrofit2.http.GET

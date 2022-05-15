@@ -5,9 +5,9 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.produceState
 import androidx.navigation.NavController
+import com.alexmumo.domain.models.responses.MovieDetailResponse
 import com.alexmumo.movies.ui.common.Constants
 import com.alexmumo.movies.ui.components.DetailCard
-import com.alexmumo.network.responses.MovieDetailResponse
 import com.alexmumo.repository.util.Resource
 import org.koin.androidx.compose.getViewModel
 

@@ -24,14 +24,14 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
-        delay(2000L)
+        delay(4000L)
         navController.popBackStack()
         navController.navigate(NavigationItem.TopRated.route)
     }
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.design_default_color_primary))
+            .background(Color.Black)
             .wrapContentSize(Alignment.Center)
     ) {
         CircularProgressIndicator(
@@ -45,10 +45,4 @@ fun SplashScreen(navController: NavController) {
             fontStyle = FontStyle.Italic
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SplashScreenPreview() {
-    // SplashScreen()
 }

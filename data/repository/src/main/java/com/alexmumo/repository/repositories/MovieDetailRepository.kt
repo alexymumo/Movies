@@ -1,7 +1,7 @@
 package com.alexmumo.repository.repositories
 
+import com.alexmumo.domain.models.responses.MovieDetailResponse
 import com.alexmumo.network.api.MovieApi
-import com.alexmumo.network.responses.MovieDetailResponse
 import com.alexmumo.repository.util.Resource
 
 class MovieDetailRepository constructor(private val movieApi: MovieApi) {
