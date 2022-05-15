@@ -5,10 +5,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -29,6 +32,12 @@ fun HomeScreen(
 
     LazyColumn {
         item {
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(
+                text = "Popular",
+                color = Color.White,
+                fontSize = 18.sp
+            )
             LazyRow(
                 content = {
                     items(popular) { popular ->
@@ -41,15 +50,18 @@ fun HomeScreen(
                                     navController.navigate("details/${popular?.id}")
                                 }
                         )
-                        Spacer(
-                            modifier = Modifier.width(5.dp)
-                        )
                     }
                 }
             )
             Spacer(modifier = Modifier.height(10.dp))
         }
         item {
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(
+                text = "Toprated",
+                color = Color.White,
+                fontSize = 18.sp
+            )
             LazyRow(
                 content = {
                     items(toprated) { toprated ->
@@ -68,6 +80,12 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(10.dp))
         }
         item {
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(
+                text = "Upcoming",
+                color = Color.White,
+                fontSize = 18.sp
+            )
             LazyRow(
                 content = {
                     items(upcoming) { upcoming ->
@@ -85,6 +103,12 @@ fun HomeScreen(
             )
         }
         item {
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(
+                text = "Now Playing",
+                color = Color.White,
+                fontSize = 18.sp
+            )
             Spacer(modifier = Modifier.height(5.dp))
             Box(
                 Modifier

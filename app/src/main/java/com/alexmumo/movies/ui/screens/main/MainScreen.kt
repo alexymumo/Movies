@@ -18,9 +18,8 @@ fun MainScreen() {
     val navController = rememberAnimatedNavController()
 
     val topLevelDestination = listOf(
-        NavigationItem.TopRated,
-        NavigationItem.Popular,
-        NavigationItem.Upcoming,
+        NavigationItem.Home,
+        NavigationItem.Search,
         NavigationItem.Favorite
     )
     val isTopLevelDestination = navController.currentBackStackEntryAsState().value?.destination?.route in topLevelDestination.map { it.route }

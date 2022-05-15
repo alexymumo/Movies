@@ -11,6 +11,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
+
+    @GET("search/multi")
+    suspend fun searchMovies(
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): MovieResponse
     @GET("movie/popular")
     suspend fun fetchPopularMovies(
         @Query("page") page: Int = 1,
