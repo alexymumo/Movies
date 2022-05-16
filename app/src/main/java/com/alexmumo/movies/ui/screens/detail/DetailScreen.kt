@@ -27,11 +27,12 @@ fun DetailScreen(
                 imageString = "${Constants.IMAGE_URL}/${moviedetail.data?.posterPath}",
                 date = moviedetail.data?.releaseDate.toString(),
                 movieId = moviedetail.data?.id!!,
-                title = moviedetail.data?.title.toString()
+                vote = moviedetail.data?.voteCount.toString(),
+                title = moviedetail.data?.title.toString(),
+                movieOverview = moviedetail.data?.overview.toString()
             )
         } else {
             CircularProgressIndicator()
         }
     }
 }
-

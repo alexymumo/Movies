@@ -1,37 +1,38 @@
 package com.alexmumo.movies.ui.common
 
-import androidx.compose.foundation.layout.height
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun AppBar() {
+fun AppBar(
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    showBackArrow: Boolean = false,
+    navActions: @Composable RowScope.() -> Unit = {},
+    title: @Composable () -> Unit = {}
+) {
     TopAppBar(
-        title = {
-            Text(
-                text = "Movies",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.SansSerif
-            )
-        },
-        contentColor = Color.White,
-        elevation = 10.dp,
-        backgroundColor = Color.Cyan,
-        modifier = Modifier.height(60.dp)
+        title = title,
+        navigationIcon = if (showBackArrow) {
+            {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = null
+                    )
+                }
+            }
+        } else null,
+        actions = navActions,
+        elevation = 4.dp
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AppBarPreview() {
-    AppBar()
 }
