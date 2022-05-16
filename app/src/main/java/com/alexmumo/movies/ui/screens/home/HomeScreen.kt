@@ -2,17 +2,20 @@ package com.alexmumo.movies.ui.screens.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import com.alexmumo.movies.ui.common.AppBar
 import com.alexmumo.movies.ui.common.Constants
 import com.alexmumo.movies.ui.components.MovieCard
 import org.koin.androidx.compose.getViewModel
@@ -27,76 +30,128 @@ fun HomeScreen(
     val nowplaying = viewModel.nowplaying.value.collectAsLazyPagingItems()
     val toprated = viewModel.toprated.value.collectAsLazyPagingItems()
     val upcoming = viewModel.upcoming.value.collectAsLazyPagingItems()
-    val scrollState = rememberScrollState()
 
-    LazyColumn {
-        item {
-            LazyRow(
-                content = {
-                    items(popular) { popular ->
-                        MovieCard(
-                            movieString = "${Constants.IMAGE_URL}/${popular?.backdropPath}",
-                            modifier = Modifier
-                                .height(200.dp)
-                                .width(200.dp)
-                                .clickable {
-                                    navController.navigate("details/${popular?.id}")
-                                }
-                        )
-                    }
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        AppBar(
+            navController = navController,
+            title = {
+                Column {
+                    Text(
+                        text = "Movie App",
+                        modifier = Modifier
+                            .padding(8.dp)
+                    )
                 }
-            )
-        }
-        item {
-            LazyRow(
-                content = {
-                    items(toprated) { toprated ->
-                        MovieCard(
-                            movieString = "${Constants.IMAGE_URL}/${toprated?.backdropPath}",
-                            modifier = Modifier
-                                .height(200.dp)
-                                .width(200.dp)
-                                .clickable {
-                                    navController.navigate("details/${toprated?.id}")
-                                }
-                        )
+            },
+            modifier = Modifier.fillMaxWidth(),
+            showBackArrow = false
+        )
+
+        LazyColumn {
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = "Popular",
+                    color = Color.White,
+                    fontSize = 18.sp
+                )
+                LazyRow(
+                    content = {
+                        items(popular) { popular ->
+                            MovieCard(
+                                movieString = "${Constants.IMAGE_URL}/${popular?.backdropPath}",
+                                modifier = Modifier
+                                    .height(200.dp)
+                                    .width(130.dp)
+                                    .clickable {
+                                        navController.navigate("details/${popular?.id}")
+                                    }
+                            )
+                        }
                     }
-                }
-            )
-        }
-        item {
-            LazyRow(
-                content = {
-                    items(upcoming) { upcoming ->
-                        MovieCard(
-                            movieString = "${Constants.IMAGE_URL}/${upcoming?.backdropPath}",
-                            modifier = Modifier
-                                .height(200.dp)
-                                .width(200.dp)
-                                .clickable {
-                                    navController.navigate("details/${upcoming?.id}")
-                                }
-                        )
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+            }
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = "Toprated",
+                    color = Color.White,
+                    fontSize = 18.sp
+                )
+                LazyRow(
+                    content = {
+                        items(toprated) { toprated ->
+                            MovieCard(
+                                movieString = "${Constants.IMAGE_URL}/${toprated?.backdropPath}",
+                                modifier = Modifier
+                                    .height(200.dp)
+                                    .width(130.dp)
+                                    .clickable {
+                                        navController.navigate("details/${toprated?.id}")
+                                    }
+                            )
+                        }
                     }
-                }
-            )
-        }
-        item {
-            LazyRow(
-                content = {
-                    items(nowplaying) { now_playing ->
-                        MovieCard(
-                            movieString = "${Constants.IMAGE_URL}/${now_playing?.backdropPath}",
-                            modifier = Modifier
-                                .height(200.dp)
-                                .width(200.dp)
-                                .clickable {
-                                    navController.navigate("details/${now_playing?.id}")
-                                }
-                        )
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+            }
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = "Upcoming",
+                    color = Color.White,
+                    fontSize = 18.sp
+                )
+                LazyRow(
+                    content = {
+                        items(upcoming) { upcoming ->
+                            MovieCard(
+                                movieString = "${Constants.IMAGE_URL}/${upcoming?.backdropPath}",
+                                modifier = Modifier
+                                    .height(200.dp)
+                                    .width(130.dp)
+                                    .clickable {
+                                        navController.navigate("details/${upcoming?.id}")
+                                    }
+                            )
+                        }
                     }
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = "Now Playing",
+                    color = Color.White,
+                    fontSize = 18.sp
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(200.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    LazyRow(
+                        content = {
+                            items(nowplaying) { now_playing ->
+                                MovieCard(
+                                    movieString = "${Constants.IMAGE_URL}/${now_playing?.backdropPath}",
+                                    modifier = Modifier
+                                        .height(200.dp)
+                                        .width(130.dp)
+                                        .clickable {
+                                            navController.navigate("details/${now_playing?.id}")
+                                        }
+                                )
+                            }
+                        }
+                    )
                 }
-            )
+            }
         }
     }
 }

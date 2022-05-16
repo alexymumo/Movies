@@ -2,8 +2,8 @@ package com.alexmumo.repository.datasources
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.alexmumo.domain.models.Movie
 import com.alexmumo.network.api.MovieApi
-import com.alexmumo.network.models.Movie
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -19,7 +19,6 @@ class PopularPagingSource constructor(private val movieApi: MovieApi) : PagingSo
         return try {
             val nextPage = params.key ?: 1
             val popular = movieApi.fetchPopularMovies(nextPage)
-            // val prevKey = if (nextPage > 0) nextPage - 1 else null
             LoadResult.Page(
                 data = popular.results,
                 prevKey = if (nextPage == 1) null else nextPage - 1,

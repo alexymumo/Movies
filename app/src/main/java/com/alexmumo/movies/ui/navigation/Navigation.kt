@@ -9,9 +9,8 @@ import androidx.navigation.navArgument
 import com.alexmumo.movies.ui.screens.detail.DetailScreen
 import com.alexmumo.movies.ui.screens.favorite.FavoriteScreen
 import com.alexmumo.movies.ui.screens.home.HomeScreen
-import com.alexmumo.movies.ui.screens.popular.PopularScreen
+import com.alexmumo.movies.ui.screens.search.SearchScreen
 import com.alexmumo.movies.ui.screens.splash.SplashScreen
-import com.alexmumo.movies.ui.screens.upcoming.UpcomingScreen
 
 @ExperimentalFoundationApi
 @Composable
@@ -20,17 +19,11 @@ fun Navigation(navController: NavHostController) {
         composable(route = NavigationItem.Splash.route) {
             SplashScreen(navController = navController)
         }
-        composable(route = NavigationItem.TopRated.route) {
+        composable(route = NavigationItem.Home.route) {
             HomeScreen(navController = navController)
         }
-        composable(route = NavigationItem.Upcoming.route) {
-            UpcomingScreen(navController = navController)
-        }
-        composable(route = NavigationItem.Favorite.route) {
-            FavoriteScreen(navController = navController)
-        }
-        composable(route = NavigationItem.Popular.route) {
-            PopularScreen(navController = navController)
+        composable(route = NavigationItem.Search.route) {
+            SearchScreen(navController = navController)
         }
         composable(route = NavigationItem.Favorite.route) {
             FavoriteScreen(navController = navController)

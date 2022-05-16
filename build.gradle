@@ -12,13 +12,14 @@ buildscript {
         navigation_animation = "0.21.3-beta"
         accompanist = "0.24.1-alpha"
         koin_version= "3.1.5"
+        gradle_version = "7.0.4"
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.10'
         classpath 'com.google.firebase:firebase-appdistribution-gradle:3.0.1'

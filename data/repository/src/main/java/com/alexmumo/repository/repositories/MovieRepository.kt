@@ -3,8 +3,8 @@ package com.alexmumo.repository.repositories
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.alexmumo.domain.models.Movie
 import com.alexmumo.network.api.MovieApi
-import com.alexmumo.network.models.Movie
 import com.alexmumo.repository.datasources.PopularPagingSource
 import com.alexmumo.repository.datasources.NowPlayingPagingSource
 import com.alexmumo.repository.datasources.TopRatedPagingSource

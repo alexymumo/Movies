@@ -11,27 +11,24 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.alexmumo.movies.R
 import com.alexmumo.movies.ui.navigation.NavigationItem
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
-        delay(2000L)
+        delay(4000L)
         navController.popBackStack()
-        navController.navigate(NavigationItem.TopRated.route)
+        navController.navigate(NavigationItem.Home.route)
     }
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.design_default_color_primary))
+            .background(Color.Black)
             .wrapContentSize(Alignment.Center)
     ) {
         CircularProgressIndicator(
@@ -45,10 +42,4 @@ fun SplashScreen(navController: NavController) {
             fontStyle = FontStyle.Italic
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SplashScreenPreview() {
-    // SplashScreen()
 }
