@@ -35,7 +35,7 @@ fun DetailCard(
             .fillMaxWidth()
             .height(400.dp)
     ) {
-        val (movieImage, movieOverview, boxFadingEdge, movieTime, movieTitle) = createRefs()
+        val (movieImage, movieOverview, boxFadingEdge, movieTitle) = createRefs()
         CoilImage(
             imageRequest = ImageRequest
                 .Builder(LocalContext.current)

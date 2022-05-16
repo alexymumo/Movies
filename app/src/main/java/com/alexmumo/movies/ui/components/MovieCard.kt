@@ -40,9 +40,7 @@ fun MovieCard(
     ) {
         Card(
             modifier = modifier
-                .height(200.dp)
-                .width(130.dp),
-            elevation = 4.dp,
+                .padding(4.dp),
             shape = RoundedCornerShape(8.dp)
         ) {
             ConstraintLayout(modifier = Modifier.fillMaxSize()) {
@@ -65,7 +63,6 @@ fun MovieCard(
                     circularReveal = CircularReveal(
                         duration = 300,
                     ),
-                    previewPlaceholder = R.drawable.ic_home,
                     failure = {
                         Text(text = "Image failed to load")
                     },
@@ -75,3 +72,6 @@ fun MovieCard(
         }
     }
 }
+
+
+
