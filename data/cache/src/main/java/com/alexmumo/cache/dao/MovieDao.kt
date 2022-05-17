@@ -16,4 +16,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM movie_entity ORDER BY movieID DESC")
     fun fetchAllMovies(): LiveData<List<MovieEntity>>
+
+    @Query("SELECT `like` FROM movie_entity WHERE movieID == :movieID")
+    fun checkFavorite(movieID: Int): LiveData<Boolean>
 }

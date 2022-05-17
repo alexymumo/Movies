@@ -1,5 +1,6 @@
 package com.alexmumo.movies.ui.screens.favorite
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alexmumo.cache.entity.MovieEntity
@@ -12,4 +13,8 @@ class FavoriteViewModel constructor(private val movieEntityRepository: MovieEnti
             movieEntityRepository.saveMovie(movieEntity)
         }
     }
+    fun checkFavorite(movieID: Int): LiveData<Boolean> {
+        return movieEntityRepository.checkFavorite(movieID)
+    }
+    val likedMovies = movieEntityRepository.fetchAllMovies()
 }

@@ -7,10 +7,9 @@ import com.alexmumo.cache.entity.MovieEntity
 
 @Database(
     entities = [MovieEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
-
 abstract class MovieDatabase : RoomDatabase() {
     abstract val movieDao: MovieDao
 }

@@ -11,4 +11,7 @@ class MovieEntityRepository constructor(private val movieDatabase: MovieDatabase
     fun fetchAllMovies(): LiveData<List<MovieEntity>> {
         return movieDatabase.movieDao.fetchAllMovies()
     }
+    fun checkFavorite(movieID: Int): LiveData<Boolean> {
+        return movieDatabase.movieDao.checkFavorite(movieID)
+    }
 }

@@ -11,6 +11,6 @@ val cacheModule = module {
             androidApplication(),
             MovieDatabase::class.java,
             "movie.db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }
