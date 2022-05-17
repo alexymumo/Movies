@@ -21,7 +21,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
-        delay(4000L)
+        delay(2000L)
         navController.popBackStack()
         navController.navigate(NavigationItem.Home.route)
     }
@@ -31,9 +31,6 @@ fun SplashScreen(navController: NavController) {
             .background(Color.Black)
             .wrapContentSize(Alignment.Center)
     ) {
-        CircularProgressIndicator(
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
         Text(
             text = "Movies",
             fontFamily = FontFamily.Monospace,

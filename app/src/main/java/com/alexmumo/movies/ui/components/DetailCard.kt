@@ -1,6 +1,7 @@
 package com.alexmumo.movies.ui.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Text
@@ -22,6 +23,7 @@ fun DetailCard(
     imageString: String,
     movieId: Int,
     vote: String,
+    time: String,
     date: String,
     movieOverview: String,
     title: String,
@@ -29,8 +31,7 @@ fun DetailCard(
 ) {
     ConstraintLayout(
         modifier = modifier
-            .fillMaxWidth()
-            .height(400.dp)
+            .fillMaxSize()
     ) {
         val (movieImage, movieDescription, boxFadingEdge, movieTitle, movieDate, movieVote) = createRefs()
         CoilImage(
@@ -41,8 +42,8 @@ fun DetailCard(
             alignment = Alignment.Center,
             modifier = modifier
                 .constrainAs(movieImage) {
-                    top.linkTo(parent.top)
                     start.linkTo(parent.start)
+                    top.linkTo(parent.top)
                     end.linkTo(parent.end)
                 },
             contentScale = ContentScale.Crop
@@ -56,39 +57,24 @@ fun DetailCard(
                 }
         )
         Text(
-            text = movieOverview,
+            text = time,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
             modifier = Modifier
-                .constrainAs(movieDescription) {
-                    bottom.linkTo(movieImage.bottom)
-                }
-        )
-        Text(
-            text = title,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-            modifier = Modifier
-                .constrainAs(movieTitle) {
-                    start.linkTo(movieTitle.end)
+                .constrainAs(movieDate) {
+                    start.linkTo(movieTitle.start)
                     bottom.linkTo(movieTitle.top)
                 }
         )
         Text(
-            text = date,
+            text = title,
             color = Color.Green,
             fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.constrainAs(movieDate) {
-                start.linkTo(movieImage.end)
+            modifier = Modifier.constrainAs(movieTitle) {
+                start.linkTo(parent.start, margin = 5.dp)
+                end.linkTo(parent.end, margin = 5.dp)
+                bottom.linkTo(parent.bottom, margin = 5.dp)
             }
-        )
-        Text(
-            text = vote,
-            color = Color.Yellow,
-            modifier = Modifier.constrainAs(movieVote) {
-                start.linkTo(movieTitle.end)
-            }
-
         )
     }
 }
