@@ -2,6 +2,7 @@ package com.alexmumo.movies
 
 import android.app.Application
 import androidx.paging.ExperimentalPagingApi
+import com.alexmumo.cache.di.cacheModule
 import com.alexmumo.movies.di.presentationModule
 import com.alexmumo.network.di.networkModule
 import com.alexmumo.repository.di.repositoryModule
@@ -21,11 +22,13 @@ class MovieApplication : Application() {
     }
 
     private fun initTimber() {
-        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun initKoin() {
-        val modules = listOf(networkModule, repositoryModule, presentationModule)
+        val modules = listOf(networkModule, repositoryModule, presentationModule, cacheModule)
         startKoin {
             androidLogger(level = Level.NONE)
             androidContext(this@MovieApplication)

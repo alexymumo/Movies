@@ -31,7 +31,8 @@ fun DetailCard(
 ) {
     ConstraintLayout(
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .height(300.dp)
     ) {
         val (movieImage, movieDescription, boxFadingEdge, movieTitle, movieDate, movieVote) = createRefs()
         CoilImage(
@@ -57,7 +58,7 @@ fun DetailCard(
                 }
         )
         Text(
-            text = time,
+            text = "Release Date: $time",
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
             modifier = Modifier
@@ -69,7 +70,7 @@ fun DetailCard(
         Text(
             text = title,
             color = Color.Green,
-            fontWeight = FontWeight.SemiBold,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier.constrainAs(movieTitle) {
                 start.linkTo(parent.start, margin = 5.dp)
                 end.linkTo(parent.end, margin = 5.dp)

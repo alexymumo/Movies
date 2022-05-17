@@ -3,6 +3,7 @@ package com.alexmumo.repository.di
 import androidx.paging.ExperimentalPagingApi
 import com.alexmumo.repository.datasources.*
 import com.alexmumo.repository.repositories.MovieDetailRepository
+import com.alexmumo.repository.repositories.MovieEntityRepository
 import com.alexmumo.repository.repositories.MovieRepository
 import org.koin.dsl.module
 
@@ -28,5 +29,8 @@ val repositoryModule = module {
     }
     single {
         SearchPagingSource(movieApi = get(), query = get())
+    }
+    single {
+        MovieEntityRepository(movieDatabase = get())
     }
 }
