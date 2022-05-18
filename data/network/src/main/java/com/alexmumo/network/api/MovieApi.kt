@@ -1,9 +1,6 @@
 package com.alexmumo.network.api
 
-import com.alexmumo.domain.models.responses.MovieDetailResponse
-import com.alexmumo.domain.models.responses.MovieResponse
-import com.alexmumo.domain.models.responses.SimilarMovieResponse
-import com.alexmumo.domain.models.responses.VideoResponse
+import com.alexmumo.domain.models.responses.*
 import com.alexmumo.network.utils.Constants.API_KEY
 import com.alexmumo.network.utils.Constants.FIRST_PAGE_INDEX
 import retrofit2.http.GET
@@ -14,27 +11,27 @@ interface MovieApi {
 
     @GET("search/multi")
     suspend fun searchMovies(
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int = FIRST_PAGE_INDEX,
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
     @GET("movie/popular")
     suspend fun fetchPopularMovies(
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int = FIRST_PAGE_INDEX,
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
 
     @GET("movie/now_playing")
     suspend fun fetchNowPlayingMovies(
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int = FIRST_PAGE_INDEX,
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
 
     @GET("movie/upcoming")
     suspend fun fetchUpcomingMovies(
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int = FIRST_PAGE_INDEX,
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
@@ -43,12 +40,12 @@ interface MovieApi {
     suspend fun fetchMovieDetail(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = API_KEY,
-        @Query("language") language: String = "en"
+        @Query("language") language: String = "fn"
     ): MovieDetailResponse
 
     @GET("movie/top_rated")
     suspend fun fetchTopRated(
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int = FIRST_PAGE_INDEX,
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): MovieResponse
@@ -66,4 +63,11 @@ interface MovieApi {
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en"
     ): SimilarMovieResponse
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun fetchMovieCast(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): CastResponse
 }
