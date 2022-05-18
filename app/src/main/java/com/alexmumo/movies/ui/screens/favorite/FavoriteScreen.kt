@@ -1,9 +1,7 @@
 package com.alexmumo.movies.ui.screens.favorite
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -47,6 +45,10 @@ fun FavoriteScreen(
                         .fillMaxWidth()
                         .height(200.dp)
                         .align(alignment = Alignment.CenterHorizontally)
+                        .padding(5.dp)
+                        .clickable {
+                            navController.navigate("details/${liked.movieID}")
+                        }
                 ) {
                     FavoriteCard(
                         movie = liked
@@ -56,3 +58,4 @@ fun FavoriteScreen(
         }
     }
 }
+

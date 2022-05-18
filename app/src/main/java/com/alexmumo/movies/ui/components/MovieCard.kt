@@ -1,6 +1,5 @@
 package com.alexmumo.movies.ui.components
 
-
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
@@ -30,7 +29,7 @@ fun MovieCard(
     movieString: String,
     modifier: Modifier = Modifier
 ) {
-    val visible by remember { mutableStateOf(true)}
+    val visible by remember { mutableStateOf(true) }
     val density = LocalDensity.current
     AnimatedVisibility(
         visible = visible,
@@ -45,6 +44,7 @@ fun MovieCard(
     ) {
         Card(
             modifier = modifier
+                .animateContentSize()
                 .padding(4.dp),
             shape = RoundedCornerShape(8.dp)
         ) {
@@ -77,6 +77,3 @@ fun MovieCard(
         }
     }
 }
-
-
-
