@@ -1,22 +1,24 @@
 package com.alexmumo.movies.ui.components
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import coil.request.ImageRequest
 import com.alexmumo.cache.entity.MovieEntity
 import com.alexmumo.movies.ui.screens.favorite.FavoriteViewModel
@@ -27,7 +29,7 @@ import org.koin.androidx.compose.getViewModel
 fun DetailCard(
     imageString: String,
     movieId: Int,
-    vote: String,
+    vote: Float,
     time: String,
     date: String,
     movieOverview: String,
@@ -63,6 +65,10 @@ fun DetailCard(
                 .constrainAs(boxFadingEdge) {
                     bottom.linkTo(parent.bottom)
                 }
+        )
+        MovieVote(
+            voteAverage = vote,
+            modifier = Modifier.fillMaxSize(0.17f)
         )
         Text(
             text = "Release Date: $time",
@@ -104,5 +110,84 @@ fun DetailCard(
                 }
             )
         }
+    }
+}
+
+@Composable
+fun MoviePoster(
+    navController: NavController,
+    movieImage: String,
+    movieDate: String,
+    movieRating: Float,
+    movieId: Int,
+    movieName: String,
+    movieRuntime: String,
+    viewModel: FavoriteViewModel = getViewModel()
+) {
+    TopAppBar(
+        contentPadding = PaddingValues(),
+        backgroundColor = Color.Green
+    ) {
+        Column {
+            Box {
+                CoilImage(
+                    imageRequest = ImageRequest
+                        .Builder(LocalContext.current)
+                        .data(movieImage)
+                        .crossfade(true)
+                        .build(),
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    alignment = Alignment.Center,
+                    contentScale = ContentScale.Crop
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(
+                            Brush.verticalGradient(
+                                colorStops = arrayOf(
+                                    Pair(0.3f, Transparent)
+                                )
+                            )
+                        )
+                )
+                MovieVote(
+                    voteAverage = movieRating
+                )
+            }
+        }
+    }
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 10.dp)
+    ) {
+        CustomBackButton(
+            onClick = {
+                navController.popBackStack()
+            }
+        )
+        LikeCard(
+            liked = viewModel.checkFavorite(movieId).observeAsState().value != null,
+            onPress = { isLiked ->
+                if (isLiked) {
+                   // Toast.makeText(context, "Already Liked", Toast.LENGTH_LONG).show()
+                } else {
+                    viewModel.saveMovie(
+                        MovieEntity(
+                            movieID = movieId,
+                            movieImage = movieImage,
+                            releaseDate = movieDate,
+                            title = movieName,
+                            like = true
+                        )
+                    )
+                }
+            }
+        )
+
     }
 }

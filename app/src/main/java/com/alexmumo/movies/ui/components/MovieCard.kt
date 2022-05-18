@@ -1,10 +1,7 @@
 package com.alexmumo.movies.ui.components
 
 import androidx.compose.animation.*
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
@@ -48,7 +45,11 @@ fun MovieCard(
                 .padding(4.dp),
             shape = RoundedCornerShape(8.dp)
         ) {
-            ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+            ConstraintLayout(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+            ) {
                 CoilImage(
                     imageRequest = ImageRequest
                         .Builder(LocalContext.current)
