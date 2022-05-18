@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.produceState
@@ -14,8 +15,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.alexmumo.domain.models.responses.CastResponse
 import com.alexmumo.domain.models.responses.MovieDetailResponse
 import com.alexmumo.movies.ui.common.Constants
+import com.alexmumo.movies.ui.components.CastCard
 import com.alexmumo.movies.ui.components.DetailCard
 import com.alexmumo.repository.util.Resource
 import org.koin.androidx.compose.getViewModel
@@ -30,6 +33,10 @@ fun DetailScreen(
     val moviedetail = produceState<Resource<MovieDetailResponse>>(initialValue = Resource.Loading()) {
         value = detailViewModel.fetchMovieDetails(movieId)
     }.value
+
+    val actors = produceState<Resource<CastResponse>>(initialValue = Resource.Loading()) {
+        value = detailViewModel.fetchMovieCasts(movieId)
+    }
 
     Box {
         if (moviedetail is Resource.Success) {
@@ -67,6 +74,13 @@ fun DetailScreen(
                     Text(
                         text = moviedetail.data?.overview.toString()
                     )
+                }
+                item {
+                    LazyRow {
+                        item {
+
+                        }
+                    }
                 }
             }
         }
