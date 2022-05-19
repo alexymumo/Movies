@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.alexmumo.movies.ui.common.AppBar
 import com.alexmumo.movies.ui.components.FavoriteCard
+import com.alexmumo.movies.ui.components.FavoriteUI
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -50,7 +51,7 @@ fun FavoriteScreen(
                             navController.navigate("details/${liked.movieID}")
                         }
                 ) {
-                    FavoriteCard(
+                    FavoriteUI(
                         movie = liked
                     )
                 }

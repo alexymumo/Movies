@@ -1,15 +1,18 @@
 package com.alexmumo.movies.ui.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.shrinkOut
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -18,50 +21,81 @@ import com.alexmumo.cache.entity.MovieEntity
 import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
-fun FavoriteCard(
+fun FavoriteUI(
+    modifier: Modifier = Modifier,
     movie: MovieEntity
 ) {
-    Box {
-        CoilImage(
-            imageRequest = ImageRequest
-                .Builder(LocalContext.current)
-                .data(movie.movieImage)
-                .crossfade(true)
-                .build(),
-            alignment = Alignment.Center,
-            loading = {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
-            },
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
+    AnimatedVisibility(
+        visible = true,
+        enter = fadeIn(),
+        exit = shrinkOut()
+    ) {
+        Card(
+            modifier = modifier
+                .animateContentSize()
+                .padding(5.dp),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Row {
+                FavoriteCard(
+                    movie = movie,
+                    modifier = Modifier.fillMaxWidth(0.35f)
+                )
+                Spacer(modifier = Modifier.size(8.dp))
+                FavoriteInfo(
+                    movie = movie,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(4.dp)
+                )
+            }
+        }
     }
 }
 
 @Composable
-fun FavoriteInfo(
-    movieTitle: String,
-    movieRelease: String
+fun FavoriteCard(
+    modifier: Modifier,
+    movie: MovieEntity
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(vertical = 5.dp, horizontal = 5.dp),
-        verticalAlignment = Alignment.Bottom
+    CoilImage(
+        imageRequest = ImageRequest
+            .Builder(LocalContext.current)
+            .data(movie.movieImage)
+            .crossfade(true)
+            .build(),
+        alignment = Alignment.Center,
+        loading = {
+            Box(modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+        },
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.fillMaxSize()
+    )
+}
+
+@Composable
+fun FavoriteInfo(
+    movie: MovieEntity,
+    modifier: Modifier = Modifier,
+    alignment: Alignment.Horizontal = Alignment.Start
+) {
+    Column(
+        modifier = modifier
+            .fillMaxHeight()
+            .fillMaxWidth(),
+        horizontalAlignment = alignment
     ) {
-        Column {
-            Text(
-                text = movieTitle,
-                color = Color.Green
-            )
-            Text(
-                text = movieRelease,
-                color = Color.Blue
-            )
-        }
+        Text(
+            text = movie.title,
+            color = Color.Green
+        )
+        Text(
+            text = movie.releaseDate,
+            color = Color.Blue
+        )
     }
 }
