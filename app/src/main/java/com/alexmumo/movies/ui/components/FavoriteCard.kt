@@ -2,6 +2,7 @@ package com.alexmumo.movies.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,29 +26,24 @@ fun FavoriteCard(
             imageRequest = ImageRequest
                 .Builder(LocalContext.current)
                 .data(movie.movieImage)
+                .crossfade(true)
                 .build(),
+            alignment = Alignment.Center,
+            loading = {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+            },
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        Box(
-            modifier = Modifier.fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        colorStops = arrayOf(
-                            Pair(0.3f, Transparent),
-                            Pair(1.5f, Transparent)
-                        )
-                    )
-                )
-        )
-        FavoriteDetails(
-            movieTitle = movie.title,
-            movieRelease = movie.releaseDate
-        )
     }
 }
+
 @Composable
-fun FavoriteDetails(
+fun FavoriteInfo(
     movieTitle: String,
     movieRelease: String
 ) {

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.alexmumo.movies.ui.navigation.NavigationItem
@@ -33,7 +34,8 @@ fun SplashScreen(navController: NavController) {
     ) {
         Text(
             text = "Movies",
-            fontFamily = FontFamily.Monospace,
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily.SansSerif,
             fontSize = 40.sp,
             color = Color.Magenta,
             fontStyle = FontStyle.Italic

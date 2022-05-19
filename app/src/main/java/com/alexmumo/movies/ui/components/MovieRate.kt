@@ -53,8 +53,7 @@ fun MovieVote(
             )
         }
         Text(
-            text = "{(currentPercentage.value * number).toInt()}%",
-            fontWeight = FontWeight.SemiBold
+            text = "${(currentPercentage.value * voteMax).toInt()}%"
         )
     }
 }

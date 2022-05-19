@@ -15,13 +15,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.sp
 import coil.request.ImageRequest
+import com.alexmumo.domain.models.Cast
+import com.alexmumo.movies.R
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
 fun CastCard(
-    castUrl: String,
-    castName: String
+    modifier: Modifier = Modifier,
+    cast: Cast
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
@@ -30,7 +32,7 @@ fun CastCard(
         CoilImage(
             imageRequest = ImageRequest
                 .Builder(LocalContext.current)
-                .data(castUrl)
+                .data(cast.profilePath)
                 .crossfade(true)
                 .build(),
             alignment = Alignment.Center,
@@ -44,6 +46,7 @@ fun CastCard(
             circularReveal = CircularReveal(
                 duration = 300,
             ),
+            previewPlaceholder = R.drawable.ic_search,
             failure = {
                 Text(text = "Image failed to load")
             },
@@ -51,7 +54,7 @@ fun CastCard(
             contentDescription = "Cast"
         )
         Text(
-            text = castName,
+            text = cast.name,
             maxLines = 1,
             color = Color.Green,
             fontSize = 18.sp,
