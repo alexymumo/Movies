@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class MovieEntity(
     @PrimaryKey
     val movieID: Int,
-    val movieImage: String?,
-    val releaseDate: String?,
-    val title: String?,
-    val favorite: Boolean
+    val movieImage: String,
+    val releaseDate: String,
+    val title: String,
+    val like: Boolean
 )
