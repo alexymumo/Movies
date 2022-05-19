@@ -5,9 +5,11 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.shrinkOut
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -91,11 +93,17 @@ fun FavoriteInfo(
     ) {
         Text(
             text = movie.title,
-            color = Color.Green
+            color = Color.DarkGray,
+            style = MaterialTheme.typography.caption,
+            maxLines = 1,
+
         )
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = movie.releaseDate,
-            color = Color.Blue
+            text = movie.title,
+            color = Color.Blue,
+            style = MaterialTheme.typography.caption,
+            maxLines = 1
         )
     }
 }

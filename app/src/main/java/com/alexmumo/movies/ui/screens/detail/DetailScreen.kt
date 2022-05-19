@@ -1,8 +1,9 @@
 package com.alexmumo.movies.ui.screens.detail
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -79,6 +80,11 @@ fun DetailScreen(
                 }
                 item {
                     Text(
+                        fontWeight = FontWeight.SemiBold,
+                        text = "Summary",
+                        fontSize = 15.sp
+                    )
+                    Text(
                         text = moviedetail.data?.overview.toString(),
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 15.sp,
@@ -102,11 +108,39 @@ fun DetailScreen(
                         fontSize = 20.sp
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    LazyRow(
-                        contentPadding = PaddingValues(horizontal = 16.dp),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                    }
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(
+                            horizontal = 10.dp
+                        ),
+                        text = "Trailers",
+                        style = MaterialTheme.typography.h6,
+                        fontSize = 20.sp
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(
+                            horizontal = 10.dp
+                        ),
+                        text = "Crew",
+                        style = MaterialTheme.typography.h6,
+                        fontSize = 20.sp
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(
+                            horizontal = 10.dp
+                        ),
+                        text = "Similar Movies",
+                        style = MaterialTheme.typography.h6,
+                        fontSize = 20.sp
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
             }
         }

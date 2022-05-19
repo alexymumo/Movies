@@ -14,7 +14,9 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun MovieVote(
@@ -24,7 +26,8 @@ fun MovieVote(
     voteMax: Int = 10,
     strokeWidth: Dp = 3.dp,
     animateDuration: Int = 1000,
-    animateDelay: Int = 0
+    animateDelay: Int = 0,
+    fontSize: TextUnit = 16.sp
 ) {
     var animation by remember {
         mutableStateOf(false)
@@ -53,7 +56,9 @@ fun MovieVote(
             )
         }
         Text(
-            text = "${(currentPercentage.value * voteMax).toInt()}%"
+            text = "${(currentPercentage.value * voteMax).toInt()}%",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = fontSize
         )
     }
 }
