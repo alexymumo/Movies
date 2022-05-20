@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.alexmumo.movies.ui.common.AppBar
+import com.alexmumo.movies.ui.components.AppBar
 import com.alexmumo.movies.ui.common.Constants
 import com.alexmumo.movies.ui.components.MovieCard
 import org.koin.androidx.compose.getViewModel

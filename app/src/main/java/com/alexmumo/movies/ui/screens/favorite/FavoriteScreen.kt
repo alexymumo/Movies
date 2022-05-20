@@ -13,8 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.alexmumo.movies.ui.common.AppBar
-import com.alexmumo.movies.ui.components.FavoriteCard
+import com.alexmumo.movies.ui.components.AppBar
 import com.alexmumo.movies.ui.components.FavoriteUI
 import org.koin.androidx.compose.getViewModel
 
