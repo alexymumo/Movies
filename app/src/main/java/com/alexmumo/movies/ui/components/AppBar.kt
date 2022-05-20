@@ -1,4 +1,4 @@
-package com.alexmumo.movies.ui.common
+package com.alexmumo.movies.ui.components
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.Icon
@@ -8,7 +8,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
