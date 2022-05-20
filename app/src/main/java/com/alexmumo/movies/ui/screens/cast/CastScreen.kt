@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.alexmumo.domain.models.Cast
-import com.alexmumo.movies.ui.common.AppBar
+import com.alexmumo.movies.ui.components.AppBar
 import com.alexmumo.movies.ui.components.CastCard
 
 @OptIn(ExperimentalFoundationApi::class)
