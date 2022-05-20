@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 fun CustomSearchBar(
     value: String,
     placeholder: String,
-    navigateUp: () -> Unit,
+    // navigateUp: () -> Unit,
     onValueChange: (String) -> Unit
 ) {
     val focusManager = LocalFocusManager.current
@@ -33,7 +33,7 @@ fun CustomSearchBar(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = { navigateUp() }) {
+            IconButton(onClick = {  }) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
             }
             TextField(
