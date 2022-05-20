@@ -33,12 +33,5 @@ fun CastScreen(
             },
             showBackArrow = true
         )
-        LazyVerticalGrid(
-            cells = GridCells.Fixed(2),
-        ) {
-            item {
-                CastCard(cast = cast)
-            }
-        }
     }
 }

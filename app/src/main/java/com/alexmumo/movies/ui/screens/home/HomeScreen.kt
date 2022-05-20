@@ -2,7 +2,7 @@ package com.alexmumo.movies.ui.screens.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.alexmumo.movies.ui.components.AppBar
 import com.alexmumo.movies.ui.common.Constants
+import com.alexmumo.movies.ui.components.AppBar
 import com.alexmumo.movies.ui.components.MovieCard
 import org.koin.androidx.compose.getViewModel
 
@@ -42,9 +42,9 @@ fun HomeScreen(
                 Column {
                     Text(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 25.sp,
-                        fontFamily = FontFamily.Serif,
-                        text = "Movie App",
+                        fontSize = 28.sp,
+                        fontFamily = FontFamily.Monospace,
+                        text = "Movies",
                         modifier = Modifier
                             .padding(8.dp)
                     )
@@ -58,9 +58,12 @@ fun HomeScreen(
             item {
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
+                    fontWeight = FontWeight.SemiBold,
                     text = "Popular",
                     color = Color.White,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    modifier = Modifier
+                        .padding(5.dp)
                 )
                 LazyRow(
                     content = {
@@ -82,9 +85,12 @@ fun HomeScreen(
             item {
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
+                    fontWeight = FontWeight.SemiBold,
                     text = "Toprated",
                     color = Color.White,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    modifier = Modifier
+                        .padding(5.dp)
                 )
                 LazyRow(
                     content = {
@@ -106,9 +112,12 @@ fun HomeScreen(
             item {
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
+                    fontWeight = FontWeight.SemiBold,
                     text = "Upcoming",
                     color = Color.White,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    modifier = Modifier
+                        .padding(5.dp)
                 )
                 LazyRow(
                     content = {
@@ -129,9 +138,12 @@ fun HomeScreen(
             item {
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
+                    fontWeight = FontWeight.SemiBold,
                     text = "Now Playing",
                     color = Color.White,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    modifier = Modifier
+                        .padding(5.dp)
                 )
                 Spacer(modifier = Modifier.height(5.dp))
                 Box(

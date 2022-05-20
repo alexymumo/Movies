@@ -39,7 +39,7 @@ fun BottomNav(
                 },
                 label = { Text(text = stringResource(id = item.title!!)) },
                 unselectedContentColor = Color.Magenta,
-                selectedContentColor = Color.Green,
+                selectedContentColor = Color.Magenta,
                 selected = isSelected,
                 alwaysShowLabel = true,
                 onClick = {

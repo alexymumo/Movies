@@ -1,11 +1,8 @@
 package com.alexmumo.movies.ui.components
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,13 +10,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.palette.graphics.Palette
 import coil.request.ImageRequest
 import com.alexmumo.cache.entity.MovieEntity
 import com.alexmumo.movies.ui.screens.favorite.FavoriteViewModel
-import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
-import com.skydoves.landscapist.palette.BitmapPalette
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -40,7 +34,6 @@ fun DetailCard(
             .height(300.dp)
     ) {
         val (movieImage, boxFadingEdge) = createRefs()
-        var palette by remember { mutableStateOf<Palette?>(null) }
         CoilImage(
             imageRequest = ImageRequest
                 .Builder(LocalContext.current)
@@ -53,9 +46,6 @@ fun DetailCard(
                     top.linkTo(parent.top)
                     end.linkTo(parent.end)
                 },
-            bitmapPalette = BitmapPalette{
-                palette = it
-            },
             contentScale = ContentScale.Crop
         )
         Box(
@@ -66,7 +56,11 @@ fun DetailCard(
                     bottom.linkTo(parent.bottom)
                 }
         )
-        Row {
+        Row(
+            modifier = Modifier.padding(
+                horizontal = 150.dp
+            )
+        ) {
             LikeCard(
                 liked = viewModel.checkFavorite(movieId).observeAsState().value != null,
                 onPress = { isLiked ->
