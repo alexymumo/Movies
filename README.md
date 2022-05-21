@@ -55,9 +55,12 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="resources/" width="300"></td>
-<td><img src="resources/" width="300"></td>
-<td><img src="resources/" width="300"></td>
+<td><img src="screenshots/splash.png" width="300"></td>
+<td><img src="screenshots/home.png" width="300"></td>
+<td><img src="screenshots/detail.png" width="300"></td>
+<td><img src="screenshots/liked.png" width="300"></td>
+<td><img src="screenshots/coming.png" width="300"></td>
+
 </tr>
 </tbody>
 </table>

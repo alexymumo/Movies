@@ -1,25 +1,21 @@
 package com.alexmumo.movies.ui.screens.detail
 
-import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.alexmumo.domain.models.responses.CastResponse
 import com.alexmumo.domain.models.responses.MovieDetailResponse
 import com.alexmumo.movies.ui.common.Constants
+import com.alexmumo.movies.ui.components.CustomBackButton
 import com.alexmumo.movies.ui.components.DetailCard
-import com.alexmumo.movies.ui.components.MovieVote
 import com.alexmumo.repository.util.Resource
 import org.koin.androidx.compose.getViewModel
 
@@ -29,13 +25,8 @@ fun DetailScreen(
     detailViewModel: DetailViewModel = getViewModel(),
     movieId: Int
 ) {
-    val context = LocalContext.current
     val moviedetail = produceState<Resource<MovieDetailResponse>>(initialValue = Resource.Loading()) {
         value = detailViewModel.fetchMovieDetails(movieId)
-    }.value
-
-    val moviecasts = produceState<Resource<CastResponse>>(initialValue = Resource.Loading()) {
-        value = detailViewModel.fetchMovieCasts(movieId)
     }.value
 
     Box {
@@ -53,6 +44,17 @@ fun DetailScreen(
                         movieId = moviedetail.data?.id!!,
                         title = moviedetail.data?.title.toString(),
                         time = moviedetail.data?.releaseDate.toString()
+                    )
+                }
+                item {
+                    Text(
+                        text = "Popularity: ${moviedetail.data?.popularity}",
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Magenta,
+                        fontSize = 20.sp,
+                        modifier = Modifier.padding(
+                            horizontal = 10.dp
+                        )
                     )
                 }
 
@@ -80,9 +82,11 @@ fun DetailScreen(
                 }
                 item {
                     Text(
-                        fontWeight = FontWeight.SemiBold,
+                        fontWeight = FontWeight.Bold,
                         text = "Summary",
-                        fontSize = 15.sp
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp)
                     )
                     Text(
                         text = moviedetail.data?.overview.toString(),
@@ -91,11 +95,6 @@ fun DetailScreen(
                         modifier = Modifier.padding(
                             horizontal = 10.dp
                         )
-                    )
-                }
-                item {
-                    MovieVote(
-                        voteAverage = moviedetail.data?.popularity?.toFloat()!!
                     )
                 }
                 item {

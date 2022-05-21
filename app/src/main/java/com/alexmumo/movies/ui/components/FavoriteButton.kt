@@ -26,6 +26,11 @@ fun LikeCard(
                 .height(30.dp)
                 .width(30.dp),
             imageVector = Icons.Filled.Favorite,
+            tint = if (liked) {
+                Color.Magenta
+            } else {
+                Color.DarkGray
+            },
             contentDescription = null
         )
     }
