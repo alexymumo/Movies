@@ -10,7 +10,6 @@ class MovieDetailRepository constructor(private val movieApi: MovieApi) {
     suspend fun fetchMovieCast(movieId: Int): Resource<CastResponse> {
         val cast = try {
             movieApi.fetchMovieCast(movieId)
-
         } catch (e: Exception) {
             return Resource.Error("Failed to fetch cast")
         }
