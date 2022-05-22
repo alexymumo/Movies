@@ -108,9 +108,6 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 
-    // Ratingbar
-    implementation 'com.github.a914-gowtham:compose-ratingbar:1.2.3'
-
     // Navigation
     implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist"
 

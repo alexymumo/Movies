@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alexmumo.domain.models.Cast
-import com.alexmumo.domain.models.responses.CastResponse
 import com.alexmumo.domain.models.responses.MovieDetailResponse
 import com.alexmumo.repository.repositories.MovieDetailRepository
 import com.alexmumo.repository.util.Resource
@@ -20,7 +19,7 @@ class DetailViewModel constructor(
     suspend fun fetchMovieDetails(movieId: Int): Resource<MovieDetailResponse> {
         return detailRepository.fetchMovieDetails(movieId)
     }
-    fun fetchMovieCasts(movieId: Int): Resource<CastResponse> {
+    fun fetchMovieCasts(movieId: Int) {
         viewModelScope.launch {
             detailRepository.fetchMovieCast(movieId).also {
                 if (it is Resource.Success) {
