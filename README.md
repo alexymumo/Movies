@@ -49,6 +49,7 @@
 <th align="center">Splash Screen</th>
 <th align="center">Home Screen</th>
 <th align="center">Detail Screen</th>
+<br>
 <th align="center">Liked Screen</th>
 <th align="center">Search Screen</th>
 </tr>
@@ -58,6 +59,7 @@
 <td><img src="screenshots/splash.png" width="300"></td>
 <td><img src="screenshots/home.png" width="300"></td>
 <td><img src="screenshots/detail.png" width="300"></td>
+<br>
 <td><img src="screenshots/liked.png" width="300"></td>
 <td><img src="screenshots/coming.png" width="300"></td>
 

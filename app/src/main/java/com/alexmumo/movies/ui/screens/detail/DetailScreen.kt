@@ -2,6 +2,7 @@ package com.alexmumo.movies.ui.screens.detail
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -14,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.alexmumo.domain.models.responses.MovieDetailResponse
 import com.alexmumo.movies.ui.common.Constants
-import com.alexmumo.movies.ui.components.CustomBackButton
+import com.alexmumo.movies.ui.components.CastCard
 import com.alexmumo.movies.ui.components.DetailCard
 import com.alexmumo.repository.util.Resource
 import org.koin.androidx.compose.getViewModel
@@ -28,6 +29,8 @@ fun DetailScreen(
     val moviedetail = produceState<Resource<MovieDetailResponse>>(initialValue = Resource.Loading()) {
         value = detailViewModel.fetchMovieDetails(movieId)
     }.value
+
+    val cast = detailViewModel.cast.value
 
     Box {
         if (moviedetail is Resource.Success) {
@@ -107,6 +110,16 @@ fun DetailScreen(
                         fontSize = 20.sp
                     )
                     Spacer(modifier = Modifier.height(8.dp))
+                }
+                item {
+                    LazyRow(
+                        modifier = Modifier.padding(4.dp)
+                    ) {
+                        cast.forEach { cast ->
+                            item { CastCard(cast = cast)
+                            }
+                        }
+                    }
                 }
                 item {
                     Text(
