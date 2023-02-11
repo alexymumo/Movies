@@ -1,4 +1,4 @@
-package com.alexmumo.movies.ui.components
+package com.alexmumo.movies.ui.composables
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height

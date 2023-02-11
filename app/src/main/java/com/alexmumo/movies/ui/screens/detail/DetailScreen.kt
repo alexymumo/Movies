@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.alexmumo.domain.models.responses.MovieDetailResponse
 import com.alexmumo.movies.ui.common.Constants
-import com.alexmumo.movies.ui.components.CastCard
-import com.alexmumo.movies.ui.components.DetailCard
+import com.alexmumo.movies.ui.composables.CastCard
+import com.alexmumo.movies.ui.composables.DetailCard
 import com.alexmumo.repository.util.Resource
 import org.koin.androidx.compose.getViewModel
 

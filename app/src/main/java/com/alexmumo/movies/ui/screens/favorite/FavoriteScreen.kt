@@ -16,8 +16,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.alexmumo.movies.ui.components.AppBar
-import com.alexmumo.movies.ui.components.FavoriteUI
+import com.alexmumo.movies.ui.composables.AppBar
+import com.alexmumo.movies.ui.composables.FavoriteUI
 import org.koin.androidx.compose.getViewModel
 
 @Composable

@@ -1,4 +1,4 @@
-package com.alexmumo.movies.ui.components
+package com.alexmumo.movies.ui.composables
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween

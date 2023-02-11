@@ -1,4 +1,4 @@
-package com.alexmumo.movies.ui.components
+package com.alexmumo.movies.ui.composables
 
 import androidx.compose.animation.* // ktlint-disable no-wildcard-imports
 import androidx.compose.foundation.layout.Box
@@ -38,7 +38,8 @@ fun MovieCard(
         exit = slideOutVertically() + shrinkVertically() + fadeOut()
     ) {
         Card(
-            modifier = modifier.padding(4.dp)
+            modifier = modifier.padding(4.dp),
+            elevation = 10.dp
         ) {
             CoilImage(
                 imageRequest = ImageRequest

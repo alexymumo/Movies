@@ -1,4 +1,4 @@
-package com.alexmumo.movies.ui.components
+package com.alexmumo.movies.ui.composables
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*

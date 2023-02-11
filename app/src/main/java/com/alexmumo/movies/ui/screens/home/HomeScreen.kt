@@ -18,8 +18,8 @@ import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.alexmumo.movies.ui.common.Constants
-import com.alexmumo.movies.ui.components.AppBar
-import com.alexmumo.movies.ui.components.MovieCard
+import com.alexmumo.movies.ui.composables.AppBar
+import com.alexmumo.movies.ui.composables.MovieCard
 import org.koin.androidx.compose.getViewModel
 
 @ExperimentalFoundationApi
@@ -42,11 +42,9 @@ fun HomeScreen(
                 Column {
                     Text(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 28.sp,
+                        fontSize = 20.sp,
                         fontFamily = FontFamily.Monospace,
-                        text = "Movies",
-                        modifier = Modifier
-                            .padding(8.dp)
+                        text = "Movies"
                     )
                 }
             },
@@ -60,7 +58,7 @@ fun HomeScreen(
                 Text(
                     fontWeight = FontWeight.SemiBold,
                     text = "Popular",
-                    color = Color.White,
+                    color = Color.Magenta,
                     fontSize = 18.sp,
                     modifier = Modifier
                         .padding(5.dp)
@@ -87,7 +85,7 @@ fun HomeScreen(
                 Text(
                     fontWeight = FontWeight.SemiBold,
                     text = "Toprated",
-                    color = Color.White,
+                    color = Color.Magenta,
                     fontSize = 18.sp,
                     modifier = Modifier
                         .padding(5.dp)
@@ -114,7 +112,7 @@ fun HomeScreen(
                 Text(
                     fontWeight = FontWeight.SemiBold,
                     text = "Upcoming",
-                    color = Color.White,
+                    color = Color.Magenta,
                     fontSize = 18.sp,
                     modifier = Modifier
                         .padding(5.dp)
@@ -140,7 +138,7 @@ fun HomeScreen(
                 Text(
                     fontWeight = FontWeight.SemiBold,
                     text = "Now Playing",
-                    color = Color.White,
+                    color = Color.Magenta,
                     fontSize = 18.sp,
                     modifier = Modifier
                         .padding(5.dp)
