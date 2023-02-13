@@ -1,5 +1,4 @@
 package com.alexmumo.movies.ui.navigation
-
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -24,7 +23,7 @@ fun BottomNav(
 ) {
     BottomNavigation(
         modifier = Modifier.fillMaxWidth(),
-        backgroundColor = Color.Cyan,
+        backgroundColor = Color.Transparent,
         contentColor = Color.White,
         elevation = 0.dp
     ) {
@@ -39,7 +38,7 @@ fun BottomNav(
                 },
                 label = { Text(text = stringResource(id = item.title!!)) },
                 unselectedContentColor = Color.Magenta,
-                selectedContentColor = Color.Magenta,
+                selectedContentColor = Color.Cyan,
                 selected = isSelected,
                 alwaysShowLabel = true,
                 onClick = {

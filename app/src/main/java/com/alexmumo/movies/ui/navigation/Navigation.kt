@@ -10,6 +10,7 @@ import com.alexmumo.movies.ui.screens.detail.DetailScreen
 import com.alexmumo.movies.ui.screens.favorite.FavoriteScreen
 import com.alexmumo.movies.ui.screens.home.HomeScreen
 import com.alexmumo.movies.ui.screens.search.SearchScreen
+import com.alexmumo.movies.ui.screens.settings.SettingScreen
 import com.alexmumo.movies.ui.screens.splash.SplashScreen
 
 @ExperimentalFoundationApi
@@ -28,8 +29,8 @@ fun Navigation(navController: NavHostController) {
         composable(route = NavigationItem.Favorite.route) {
             FavoriteScreen(navController = navController)
         }
-        composable(route = NavigationItem) {
-
+        composable(route = NavigationItem.Settings.route) {
+            SettingScreen()
         }
         composable(
             route = NavigationItem.Details.route,

@@ -7,4 +7,9 @@
     <string name="home">Home</string>
     <string name="details">Details</string>
     <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="found">Not Found</string>
+    <string name="four">404</string>
+    <string name="try_again">Try Again</string>
+    <string name="internet">Sorry, the keyword you entered could not be found. Try to check again or search with other keywords.</string>
 </resources>
