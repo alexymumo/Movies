@@ -23,61 +23,61 @@ import com.skydoves.landscapist.coil.CoilImage
 fun FavoriteItem(
     movieEntity: MovieEntity
 ) {
-    Column(
-        modifier = Modifier.fillMaxWidth().height(100.dp).padding(bottom = 5.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(150.dp)
+            .padding(5.dp)
     ) {
-        Card(
-            elevation = 20.dp,
-            shape = RoundedCornerShape(10.dp),
-            modifier = Modifier.fillMaxSize()
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp)
         ) {
-            Row{
-                Card(
-                    modifier = Modifier
-                        .height(120.dp)
-                        .width(120.dp),
-                    shape = RoundedCornerShape(10.dp)
-                ) {
-                    CoilImage(
-                        imageRequest = ImageRequest
-                            .Builder(LocalContext.current)
-                            .data(movieEntity.movieImage)
-                            .crossfade(true)
-                            .build(),
-                        alignment = Alignment.Center,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-                Column {
-                    Text(
-                        text = movieEntity.title,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.DarkGray
-                    )
-                    Spacer(modifier = Modifier.height(5.dp))
-                    Text(
-                        text = movieEntity.releaseDate,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Magenta,
-                        modifier = Modifier.border(
-                            BorderStroke(width = 1.dp, Color.Magenta),
-                            shape = RoundedCornerShape(20.dp)
-                        ).padding(5.dp)
-                    )
-                }
+            Card(
+                elevation = 10.dp,
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier
+                    .height(150.dp)
+                    .width(150.dp)
+            ) {
+                CoilImage(
+                    imageRequest = ImageRequest
+                        .Builder(LocalContext.current)
+                        .data(movieEntity.movieImage)
+                        .crossfade(true)
+                        .build(),
+                    alignment = Alignment.Center,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            Column {
+                Text(
+                    text = movieEntity.title,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = movieEntity.releaseDate,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Magenta,
+                    modifier = Modifier.border(
+                        BorderStroke(width = 1.dp, Color.Magenta),
+                        shape = RoundedCornerShape(20.dp)
+                    ).padding(5.dp)
+                )
             }
         }
     }
 }
 
+
 @Preview
 @Composable
 fun FavoriteItemPreview() {
-    //FavoriteItem()
-
 }
+
 

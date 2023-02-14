@@ -17,4 +17,5 @@ class FavoriteViewModel constructor(private val movieEntityRepository: MovieEnti
         return movieEntityRepository.checkFavorite(movieID)
     }
     val likedMovies = movieEntityRepository.fetchAllMovies()
+
 }

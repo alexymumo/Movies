@@ -1,4 +1,4 @@
-package com.alexmumo.movies
+package com.example.common
 
 import org.junit.Test
 

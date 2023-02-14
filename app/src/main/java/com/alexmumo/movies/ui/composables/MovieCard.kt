@@ -46,16 +46,12 @@ fun MovieCard(
         exit = slideOutVertically() + shrinkVertically() + fadeOut()
     ) {
         Card(
-            modifier = modifier.padding(4.dp),
+            modifier = modifier
+                .height(200.dp)
+                .width(130.dp).padding(4.dp),
             elevation = 10.dp,
             shape = RoundedCornerShape(10.dp)
         ) {
-            Box {
-                Text(
-                    text = "20",
-                    modifier = Modifier
-                        .padding(5.dp)
-                )
                 CoilImage(
                     imageRequest = ImageRequest
                         .Builder(LocalContext.current)
@@ -75,7 +71,6 @@ fun MovieCard(
                     ),
                     contentScale = ContentScale.Crop
                 )
-            }
         }
     }
 }

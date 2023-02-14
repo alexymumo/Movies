@@ -2,9 +2,11 @@ package com.alexmumo.movies.ui.screens.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,24 +35,143 @@ fun HomeScreen(
     val toprated = viewModel.toprated.value.collectAsLazyPagingItems()
     val upcoming = viewModel.upcoming.value.collectAsLazyPagingItems()
 
+    val scrollState = rememberScrollState()
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
     ) {
-        AppBar(
-            navController = navController,
-            title = {
-                Column {
-                    Text(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        fontFamily = FontFamily.Monospace,
-                        text = "Movies"
+        Text(
+            fontWeight = FontWeight.SemiBold,
+            text = "Popular",
+            color = Color.Magenta,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(5.dp)
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        LazyRow(
+            content = {
+                items(popular) { popular ->
+                    MovieCard(
+                        movieString = "${Constants.IMAGE_URL}/${popular?.backdropPath}",
+                        modifier = Modifier
+                            .height(200.dp)
+                            .width(130.dp)
+                            .clickable {
+                                navController.navigate("details/${popular?.id}")
+                            }
                     )
                 }
-            },
-            modifier = Modifier.fillMaxWidth(),
-            showBackArrow = false
+            }
         )
+        Spacer(modifier = Modifier.height(5.dp))
+        Text(
+            fontWeight = FontWeight.SemiBold,
+            text = "Toprated",
+            color = Color.Magenta,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(5.dp)
+        )
+        LazyRow(
+            content = {
+                items(toprated) { toprated ->
+                    MovieCard(
+                        movieString = "${Constants.IMAGE_URL}/${toprated?.backdropPath}",
+                        modifier = Modifier
+                            .height(200.dp)
+                            .width(130.dp)
+                            .clickable {
+                                navController.navigate("details/${toprated?.id}")
+                            }
+                    )
+                }
+            }
+        )
+
+        Spacer(modifier = Modifier.height(5.dp))
+        Text(
+            fontWeight = FontWeight.SemiBold,
+            text = "Upcoming",
+            color = Color.Magenta,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(5.dp)
+        )
+        LazyRow(
+            content = {
+                items(upcoming) { upcoming ->
+                    MovieCard(
+                        movieString = "${Constants.IMAGE_URL}/${upcoming?.backdropPath}",
+                        modifier = Modifier
+                            .height(200.dp)
+                            .width(130.dp)
+                            .clickable {
+                                navController.navigate("details/${upcoming?.id}")
+                            }
+                    )
+                }
+            }
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        Text(
+            fontWeight = FontWeight.SemiBold,
+            text = "Now Playing",
+            color = Color.Magenta,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(5.dp)
+        )
+        LazyRow(
+            content = {
+                items(nowplaying) { now_playing ->
+                    MovieCard(
+                        movieString = "${Constants.IMAGE_URL}/${now_playing?.backdropPath}",
+                        modifier = Modifier
+                            .height(200.dp)
+                            .width(130.dp)
+                            .clickable {
+                                navController.navigate("details/${now_playing?.id}")
+                            }
+                    )
+                }
+            }
+        )
+    }
+}
+
+
+
+
+
+
+
+
+
+/*
+    AppBar(
+        navController = navController,
+        title = {
+            Column {
+                Text(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    fontFamily = FontFamily.Monospace,
+                    text = "Movies"
+                )
+            }
+        },
+        modifier = Modifier.fillMaxWidth(),
+        showBackArrow = false
+
+
+
+
+
+
+
+
+
 
         LazyColumn {
             item {
@@ -168,5 +289,8 @@ fun HomeScreen(
                 }
             }
         }
-    }
-}
+
+
+
+
+    )*/

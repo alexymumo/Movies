@@ -11,4 +11,7 @@ data class MovieEntity(
     val releaseDate: String,
     val title: String,
     val like: Boolean
+    //val overview: String,
+    //val popularity: Double,
+    //val voteCount: Int
 )
