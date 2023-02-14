@@ -13,6 +13,8 @@ interface MovieApi {
     suspend fun searchMovies(
         @Query("page") page: Int = FIRST_PAGE_INDEX,
         @Query("api_key") apiKey: String = API_KEY,
+        //@Query("query") query: String,
+        //@Query("include_adult") include_adult: Boolean = true,
         @Query("language") language: String = "en"
     ): MovieResponse
     @GET("movie/popular")

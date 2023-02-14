@@ -22,9 +22,6 @@ class MovieApplication : Application() {
     }
 
     private fun initTimber() {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
     }
 
     private fun initKoin() {
